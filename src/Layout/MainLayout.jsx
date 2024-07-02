@@ -9,7 +9,7 @@ const MainLayout = () => {
       {/* Sidebar */}
       <div className="bg-blue h-screen w-[300px] text-white ">
         <img src={logo} alt="" className="pt-5 px-5 mb-8" />
-        <div className="flex flex-col">
+        <div className=" flex-col hidden md:flex">
           {sidenav.map((item) => (
             <NavLink
               className={({ isActive }) =>
