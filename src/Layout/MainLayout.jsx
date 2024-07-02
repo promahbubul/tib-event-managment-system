@@ -7,9 +7,9 @@ const MainLayout = () => {
   return (
     <div className="flex flex-row font-poppins">
       {/* Sidebar */}
-      <div className="bg-blue h-screen w-[300px] text-white ">
+      <div className="bg-blue h-screen w-[300px] text-white hidden lg:block ">
         <img src={logo} alt="" className="pt-5 px-5 mb-8" />
-        <div className=" flex-col hidden md:flex">
+        <div className="flex flex-col ">
           {sidenav.map((item) => (
             <NavLink
               className={({ isActive }) =>
