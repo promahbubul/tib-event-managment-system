@@ -49,7 +49,9 @@ const MainLayout = () => {
             </Link>
           </div>
         </nav>
-        <Outlet />
+        <div className="h-[calc(100vh-104px)] overflow-auto border-2 border-red-500">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
