@@ -1,9 +1,11 @@
-const ProgressStatus
- = () => {
+const ProgressStatus = () => {
+  const handleClick = (e) => {
+    console.log(window.clientInformation.navigator);
+  };
   return (
-    <div>ProgressStatus
-        
+    <div>
+      <input type="file" name="" id="" onChange={handleClick} />
     </div>
-  )
-}
-export default ProgressStatus
+  );
+};
+export default ProgressStatus;

@@ -7,9 +7,11 @@ const DropDown = ({ className, options, title }) => {
         name=""
         id=""
       >
-        <option className="" value="">
-          {options ? options : " Mymensingh"}
-        </option>
+        {options?.map((item, index) => (
+          <option key={index} className="" value="">
+            {item}
+          </option>
+        ))}
       </select>
     </div>
   );

@@ -1,6 +1,7 @@
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import logo from "../assets/images/logo.svg";
 import { routePath, sidenav } from "../constant/sidenav.constant";
+import Footer from "../components/shared/Footer";
 const MainLayout = () => {
   const location = useLocation();
 
@@ -49,9 +50,10 @@ const MainLayout = () => {
             </Link>
           </div>
         </nav>
-        <div className="h-[calc(100vh-104px)] overflow-auto border-2 border-red-500">
+        <div className="h-[calc(100vh-120px)] overflow-auto ">
           <Outlet />
         </div>
+        <Footer />
       </div>
     </div>
   );
