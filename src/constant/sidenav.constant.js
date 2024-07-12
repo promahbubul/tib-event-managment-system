@@ -1,8 +1,8 @@
 const routePath = {
-  home: "/",
-  eventForm: "/event-form",
-  eventReport: "/event-report",
-  progressStatus: "/progress-status",
+  home: "home",
+  eventForm: "event-form",
+  eventReport: "event-report",
+  progressStatus: "progress-status",
 };
 const sidenav = [
   { id: 1, title: "Home", path: routePath.home },

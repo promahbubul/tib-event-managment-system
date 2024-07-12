@@ -1,5 +1,5 @@
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
-import logo from "../assets/images/logo.svg";
+import logo from "../assets/images/logo/logo-without-bg.png";
 import { routePath, sidenav } from "../constant/sidenav.constant";
 import Footer from "../components/shared/Footer";
 const MainLayout = () => {
@@ -9,7 +9,7 @@ const MainLayout = () => {
     <div className="flex flex-row font-poppins">
       {/* Sidebar */}
       <div className="bg-blue h-screen w-[300px] text-white hidden lg:block ">
-        <img src={logo} alt="" className="pt-5 px-5 mb-8" />
+        <img src={logo} alt="" className="pt-4 w-24 mb-4  mx-auto" />
         <div className="flex flex-col ">
           {sidenav.map((item) => (
             <NavLink
