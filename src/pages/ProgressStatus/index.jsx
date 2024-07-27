@@ -1,10 +1,16 @@
+import { useState } from "react";
+
 const ProgressStatus = () => {
-  const handleClick = (e) => {
-    console.log(window.clientInformation.navigator);
-  };
+  const [ll, setll] = useState("");
+  const handleFormSubmit = (e) => {};
   return (
     <div>
-      <input type="file" name="" id="" onChange={handleClick} />
+      <form onSubmit={handleFormSubmit} action="" className="">
+        <input type="file" name="photo" id="" />
+        <input type="submit" value="Submit" />
+      </form>
+
+      <img src={ll} alt="" />
     </div>
   );
 };

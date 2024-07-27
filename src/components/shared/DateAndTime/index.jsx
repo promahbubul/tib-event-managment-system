@@ -3,6 +3,8 @@ const DateAndTime = ({
   type,
   placeholder,
   dateTitle,
+  eventDate,
+  eventTime,
   timeTitle,
 }) => {
   return (
@@ -16,7 +18,7 @@ const DateAndTime = ({
             type="date"
             placeholder={placeholder}
             className={`bg-lightBlue2 w-full  placeholder:text-blue/70  font-normal text-lg text-blue outline-none  py-2 px-4 rounded-lg`}
-            name=""
+            name={eventDate}
             id=""
           />
         </div>
@@ -28,7 +30,7 @@ const DateAndTime = ({
             type="time"
             placeholder={placeholder}
             className={`bg-lightBlue2 w-full  placeholder:text-blue/70  font-normal text-lg text-blue outline-none  py-2 px-4 rounded-lg`}
-            name=""
+            name={eventTime}
             id=""
           />
         </div>

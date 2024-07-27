@@ -1,4 +1,4 @@
-const StatisticsTotal = ({ title }) => {
+const StatisticsTotal = ({ title, total }) => {
   return (
     <div className="mb-3">
       <h2 className="text-center border-b pb-2 border-b-blue  font-bold text-base text-[#003ED3]">
@@ -17,7 +17,7 @@ const StatisticsTotal = ({ title }) => {
             id="male"
             className="py-3 px-5 rounded-lg border-none text-lg font-bold outline-none text-[#2C54AE] w-full text-center"
           >
-            20
+            {total?.male}
           </span>
         </div>
         {/* Female */}
@@ -32,7 +32,7 @@ const StatisticsTotal = ({ title }) => {
             id="male"
             className="py-3 px-5 rounded-lg border-none text-lg font-bold outline-none text-[#2C54AE] w-full text-center"
           >
-            20
+            {total?.female}
           </span>
         </div>
         {/* Marginalized */}
@@ -47,7 +47,7 @@ const StatisticsTotal = ({ title }) => {
             id="male"
             className="py-3 px-5 rounded-lg border-none text-lg font-bold outline-none text-[#2C54AE] w-full text-center"
           >
-            20
+            {total?.marginalized}
           </span>
         </div>
         {/* Total */}
@@ -62,7 +62,7 @@ const StatisticsTotal = ({ title }) => {
             id="male"
             className="py-3 px-5 rounded-lg border-none text-lg font-bold outline-none text-[#2C54AE] w-full text-center"
           >
-            20
+            {total?.total}
           </span>
         </div>
       </div>
