@@ -149,11 +149,15 @@ const EventForm = () => {
         <InputFile className={"col-span-4"} />
       </div>
       <SectionHeading>Participants</SectionHeading>
-      <div className=" bg-white rounded-lg p-2">
-        <h4 className="text-base col-span-12 text-[#02042F] font-light">
+      <div className=" bg-white rounded-lg p-2 mt-2 ">
+        <h4 className="text-base col-span-12 text-[#02042F] font-light mb-4">
           Internal (Core actors)
         </h4>
-        <StatisticsForm />
+        <div className="">
+          <StatisticsForm title={"CCC"} />
+          <StatisticsForm title={"ACG"} />
+          <StatisticsForm title={"YES"} />
+        </div>
       </div>
     </form>
   );

@@ -1,4 +1,4 @@
-const StatisticsForm = ({title}) => {
+const StatisticsTotal = ({ title }) => {
   return (
     <div className="mb-3">
       <h2 className="text-center border-b pb-2 border-b-blue font-bold text-base text-[#003ED3]">
@@ -57,4 +57,4 @@ const StatisticsForm = ({title}) => {
     </div>
   );
 };
-export default StatisticsForm;
+export default StatisticsTotal;
