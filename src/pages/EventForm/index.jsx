@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext } from "react";
 import {
   DateAndTime,
   DropDown,
@@ -10,15 +10,23 @@ import {
 import generalInformation from "../../constant/generalInformation.constant";
 import StatisticsForm from "../../components/shared/StatisticsForm";
 import StatisticsTotal from "../../components/shared/StatisticsTotal";
-import allParticipant from "../../constant/participants.constant";
+import { CreateEventContext } from "../../context/EventContext";
 
 const EventForm = () => {
-  const [img1, setImg1] = useState(null);
-  const [CCC, setCCC] = useState(allParticipant.ccc);
-  const [ACG, setACG] = useState(allParticipant.acg);
-  const [YES, setYES] = useState(allParticipant.yes);
-  const [extra, setExtra] = useState(allParticipant.extra);
-  const [total, setTotal] = useState(allParticipant.total);
+  const {
+    img1,
+    CCC,
+    ACG,
+    YES,
+    extra,
+    total,
+    setImg1,
+    setCCC,
+    setACG,
+    setYES,
+    setExtra,
+    setTotal,
+  } = useContext(CreateEventContext);
 
   // set total
   const handleTotal = () => {
@@ -316,4 +324,5 @@ const EventForm = () => {
     </form>
   );
 };
+
 export default EventForm;

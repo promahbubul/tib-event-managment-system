@@ -1,9 +1,13 @@
+import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import PrivetRoute from "./routes/PrivetRoute";
+import EventContext from "./context/EventContext";
 
-const root = document.getElementById("root");
-
-ReactDOM.render(<RouterProvider router={PrivetRoute} />, root);
+ReactDOM.render(
+  <EventContext>
+    <RouterProvider router={PrivetRoute} />{" "}
+  </EventContext>,
+  document.getElementById("root")
+);
