@@ -8,6 +8,7 @@ import {
   TextArea,
 } from "../../components/shared";
 import generalInformation from "../../constant/generalInformation.constant";
+import StatisticsForm from "../../components/shared/StatisticsForm";
 
 const EventForm = () => {
   const [img1, setImg1] = useState(null);
@@ -146,6 +147,13 @@ const EventForm = () => {
         />
         <InputFile className={"col-span-4"} />
         <InputFile className={"col-span-4"} />
+      </div>
+      <SectionHeading>Participants</SectionHeading>
+      <div className=" bg-white rounded-lg p-2">
+        <h4 className="text-base col-span-12 text-[#02042F] font-light">
+          Internal (Core actors)
+        </h4>
+        <StatisticsForm />
       </div>
     </form>
   );
