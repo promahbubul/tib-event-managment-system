@@ -9,6 +9,7 @@ import {
 } from "../../components/shared";
 import generalInformation from "../../constant/generalInformation.constant";
 import StatisticsForm from "../../components/shared/StatisticsForm";
+import StatisticsTotal from "../../components/shared/StatisticsTotal";
 
 const EventForm = () => {
   const [img1, setImg1] = useState(null);
@@ -150,14 +151,37 @@ const EventForm = () => {
       </div>
       <SectionHeading>Participants</SectionHeading>
       <div className=" bg-white rounded-lg p-2 mt-2 ">
-        <h4 className="text-base col-span-12 text-[#02042F] font-light mb-4">
+        <h4 className="text-base col-span-12 text-[#02042F] pl-5 font-light mb-4">
           Internal (Core actors)
         </h4>
-        <div className="">
+        <div className="flex flex-col gap-3">
           <StatisticsForm title={"CCC"} />
           <StatisticsForm title={"ACG"} />
           <StatisticsForm title={"YES"} />
         </div>
+      </div>
+      <div className=" bg-white rounded-lg p-2 mt-2 ">
+        <h4 className="text-base col-span-12 text-[#02042F] pl-5 font-light mb-4">
+          External (Direct other participants)
+        </h4>
+        <div className="">
+          <StatisticsForm />
+        </div>
+      </div>
+      <div className=" bg-white rounded-lg p-2 mt-2 ">
+        <h4 className="text-base col-span-12 text-[#02042F] pl-5 font-light mb-4">
+          Total
+        </h4>
+        <div className="">
+          <StatisticsTotal />
+        </div>
+      </div>
+      <div className="flex justify-end mt-5 ">
+        <input
+          type="submit"
+          value="Submit"
+          className="bg-gradient-to-r to-[#153170] from-[#1959EA] text-right rounded-lg  py-3 px-20 text-[28px] text-white font-bold cursor-pointer"
+        />
       </div>
     </form>
   );

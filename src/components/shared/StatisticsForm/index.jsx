@@ -1,6 +1,6 @@
-const StatisticsForm = ({title}) => {
+const StatisticsForm = ({ title }) => {
   return (
-    <div className="mb-3">
+    <div className="">
       <h2 className="text-center border-b pb-2 border-b-blue font-bold text-base text-[#003ED3]">
         {title}
       </h2>
