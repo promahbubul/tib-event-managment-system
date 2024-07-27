@@ -111,8 +111,43 @@ const EventForm = () => {
       additionalInformation,
     };
 
-    console.log([genInfo, programDetails, participants]);
-    alert("Data Submit Successfully");
+    console.log({ genInfo, programDetails, participants });
+    const event = { genInfo, programDetails, participants };
+    const eventString = JSON.stringify(event);
+    fetch("http://localhost:5000/api/v1/event", {
+      method: "POST",
+      body: eventString,
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged === true) {
+          alert("Data Submit Successfully");
+
+          // Clear Form Data
+          form.reset();
+          form.eventObjectives.value = "";
+          form.eventActions.value = "";
+          form.participantType.value = "";
+          form.guest.value = "";
+          form.eventObjectives.value = "";
+          form.immediateResults.value = "";
+          form.issuesName.value = "";
+          form.issueAddressed.value = "";
+          form.lessonsLearned.value = "";
+          form.challenges.value = "";
+          form.additionalInformation.value = "";
+          // setCCC({});
+          // setACG({});
+          // setYES({});
+          // setExtra({});
+          // setTotal({});
+        }
+      })
+      .catch((err) => console.log(err));
+    console.log(eventString);
   };
   return (
     <form

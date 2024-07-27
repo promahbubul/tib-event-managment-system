@@ -21,7 +21,11 @@ const PrivetRoute = createBrowserRouter([
     children: [
       { path: routePath.home, element: <Home /> },
       { path: routePath.eventForm, element: <EventForm /> },
-      { path: routePath.eventReport, element: <EventReport /> },
+      {
+        path: routePath.eventReport,
+        element: <EventReport />,
+        loader: () => fetch("http://localhost:5000/api/v1/events"),
+      },
       { path: routePath.progressStatus, element: <ProgressStatus /> },
     ],
   },
