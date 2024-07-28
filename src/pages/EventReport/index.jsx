@@ -6,7 +6,7 @@ const EventReport = () => {
 
   console.log(events);
   return (
-    <div className="border-2 py-7 px-4 bg-[#E3E3E8] h-full">
+    <div className="border-2 py-7 px-4 bg-[#E3E3E8] h-full overflow-auto ">
       <EventFilter />
       <EventList events={events} />
     </div>

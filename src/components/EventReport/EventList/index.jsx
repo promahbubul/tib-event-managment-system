@@ -1,9 +1,10 @@
 import moment from "moment";
-import { BsFillPlusSquareFill } from "react-icons/bs";
+// import { BsFillPlusSquareFill } from "react-icons/bs";
 import { FaPen, FaTrash } from "react-icons/fa";
 import { PiEyeFill } from "react-icons/pi";
 import Details from "./Details";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const EventList = ({ events }) => {
   const [eventData, setEventData] = useState(events);
@@ -33,7 +34,7 @@ const EventList = ({ events }) => {
       </div>
       {/* Event Table */}
       <div className="flex flex-col gap-0.5 mt-3 ">
-        {eventData.map((event) => (
+        {eventData?.map((event) => (
           <div className=" bg-white py-2 px-5 relative ">
             <input
               type="checkbox"
@@ -61,7 +62,9 @@ const EventList = ({ events }) => {
                 {event?.genInfo?.subSectorName}
               </p>
               <div className="col-span-2 text-right  relative z-10 justify-end flex flex-row items-center gap-5">
-                <FaPen className="text-lg text-green cursor-pointer" />
+                <Link to={`/dashboard/event/edit/${event?._id}`}>
+                  <FaPen className="text-lg text-green cursor-pointer" />
+                </Link>
                 <PiEyeFill className="text-lg text-LightBlue cursor-pointer" />
                 <FaTrash
                   onClick={() => handleDeleteEvent(event?._id)}
@@ -74,7 +77,7 @@ const EventList = ({ events }) => {
               {/* Name of Issues */}
               <Details
                 name={event?.programDetails?.issuesName}
-                title={"Name of rised issues:"}
+                title={"Name of raised issues:"}
               />
               <Details
                 name={event?.programDetails?.issuesName}

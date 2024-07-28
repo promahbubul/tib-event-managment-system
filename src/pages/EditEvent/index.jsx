@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import {
   DateAndTime,
   DropDown,
@@ -7,12 +7,16 @@ import {
   SectionHeading,
   TextArea,
 } from "../../components/shared";
-import generalInformation from "../../constant/generalInformation.constant";
 import StatisticsForm from "../../components/shared/StatisticsForm";
 import StatisticsTotal from "../../components/shared/StatisticsTotal";
 import { CreateEventContext } from "../../context/EventContext";
+import { useContext } from "react";
+import generalInformation from "../../constant/generalInformation.constant";
 
-const EventForm = () => {
+const EditEvent = () => {
+  const event = useLoaderData();
+  const navigate = useNavigate();
+
   const {
     img1,
     CCC,
@@ -112,19 +116,20 @@ const EventForm = () => {
     };
 
     console.log({ genInfo, programDetails, participants });
-    const event = { genInfo, programDetails, participants };
-    const eventString = JSON.stringify(event);
-    fetch("http://localhost:5000/api/v1/event", {
-      method: "POST",
-      body: eventString,
+    const updateEvent = { genInfo, programDetails, participants };
+    const updateEventString = JSON.stringify(updateEvent);
+    fetch(`http://localhost:5000/api/v1/event/${event._id}`, {
+      method: "PUT",
+      body: updateEventString,
       headers: {
         "Content-type": "application/json",
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.acknowledged === true) {
-          alert("Data Submit Successfully");
+        if (data.modifiedCount > 0) {
+          alert("Data Update Successfully");
+          navigate("/dashboard/event-report");
 
           // Clear Form Data
           // form.reset();
@@ -147,8 +152,10 @@ const EventForm = () => {
         }
       })
       .catch((err) => console.log(err));
-    console.log(eventString);
+
+    // console.log(updateEvent);
   };
+  //   console.log(event.participants);
   return (
     <form
       onSubmit={handleFormSubmit}
@@ -158,54 +165,64 @@ const EventForm = () => {
       <SectionHeading>General Information</SectionHeading>
       <div className="grid mb-6 grid-cols-12 mt-4 gap-4">
         <DropDown
+          value={event?.genInfo?.cccName}
           options={generalInformation?.ccc}
           className={"col-span-4"}
           title={"Name of CCC:"}
           itemName={"cccName"}
         />
         <DropDown
+          value={event?.genInfo?.initiativeType}
           options={generalInformation?.initiative}
           className={"col-span-4"}
           title={"Type of initiative"}
           itemName={"initiativeType"}
         />
         <DropDown
+          value={event?.genInfo?.clusterName}
           options={generalInformation?.cluster}
           className={"col-span-4"}
           title={"Name of Cluster"}
           itemName={"clusterName"}
         />
         <DropDown
+          value={event?.genInfo?.eventName}
           options={generalInformation?.nameEvent}
           className={"col-span-4"}
           itemName={"eventName"}
           title={"Name of Event"}
         />
         <DropDown
+          value={event?.genInfo?.sectorName}
           options={generalInformation?.sector}
           className={"col-span-3"}
           title={"Sector:"}
           itemName={"sectorName"}
         />
         <DropDown
+          value={event?.genInfo?.subSectorName}
           options={generalInformation?.subSector}
           className={"col-span-5"}
           itemName={"subSectorName"}
           title={"Sub-sector:"}
         />
         <InputField
+          value={event?.genInfo?.vanueName}
           className={"col-span-6"}
           itemName={"vanueName"}
           title={"Name of vanue"}
           placeholder={"Enter your venue location"}
         />
         <InputField
+          value={event?.genInfo?.meetingWithWhom}
           className={"col-span-6"}
           itemName={"meetingWithWhom"}
           title={"Meeting with whom"}
           placeholder={"Enter you authority name "}
         />
         <DateAndTime
+          valueDate={event?.genInfo?.startEventDate}
+          valueTime={event?.genInfo?.startEventTime}
           className={"col-span-6"}
           eventDate={"startEventDate"}
           eventTime={"startEventTime"}
@@ -213,6 +230,8 @@ const EventForm = () => {
           timeTitle={"Start Time:"}
         />
         <DateAndTime
+          valueDate={event?.genInfo?.endEventDate}
+          valueTime={event?.genInfo?.endEventTime}
           eventDate={"endEventDate"}
           eventTime={"endEventTime"}
           className={"col-span-6"}
@@ -223,6 +242,7 @@ const EventForm = () => {
       <SectionHeading>Program details</SectionHeading>
       <div className="grid grid-cols-12 mt-4 gap-4">
         <TextArea
+          value={event?.programDetails?.eventObjectives}
           itemName={"eventObjectives"}
           row={"h-28"}
           className={"col-span-6"}
@@ -230,6 +250,7 @@ const EventForm = () => {
           placeholder={"Write event objectives"}
         />
         <TextArea
+          value={event?.programDetails?.eventActions}
           itemName={"eventActions"}
           row={"h-28"}
           className={"col-span-6"}
@@ -237,6 +258,7 @@ const EventForm = () => {
           placeholder={"Write here major actions"}
         />
         <TextArea
+          value={event?.programDetails?.participantType}
           itemName={"participantType"}
           row={"h-20"}
           className={"col-span-6"}
@@ -244,6 +266,7 @@ const EventForm = () => {
           placeholder={"Write here  type of participant"}
         />
         <TextArea
+          value={event?.programDetails?.guest}
           itemName={"guest"}
           row={"h-20"}
           className={"col-span-6"}
@@ -251,6 +274,7 @@ const EventForm = () => {
           placeholder={"Write here designation"}
         />
         <TextArea
+          value={event?.programDetails?.chairperson}
           itemName={"chairperson"}
           row={"h-20"}
           className={"col-span-6"}
@@ -259,6 +283,7 @@ const EventForm = () => {
         />
 
         <TextArea
+          value={event?.programDetails?.immediateResults}
           itemName={"immediateResults"}
           row={"h-20"}
           className={"col-span-6"}
@@ -266,6 +291,7 @@ const EventForm = () => {
           placeholder={"Write here if any"}
         />
         <TextArea
+          value={event?.programDetails?.issuesName}
           itemName={"issuesName"}
           row={"h-28"}
           className={"col-span-12"}
@@ -273,6 +299,7 @@ const EventForm = () => {
           placeholder={"Write here name of all issues"}
         />
         <TextArea
+          value={event?.programDetails?.issueAddressed}
           itemName={"issueAddressed"}
           row={"h-16"}
           className={"col-span-4"}
@@ -280,6 +307,7 @@ const EventForm = () => {
           placeholder={"Write here name of all issues"}
         />
         <TextArea
+          value={event?.programDetails?.lessonsLearned}
           itemName={"lessonsLearned"}
           row={"h-16"}
           className={"col-span-4"}
@@ -287,6 +315,7 @@ const EventForm = () => {
           placeholder={"Write here what you learned"}
         />
         <TextArea
+          value={event?.programDetails?.challenges}
           itemName={"challenges"}
           row={"h-16"}
           className={"col-span-4"}
@@ -294,6 +323,7 @@ const EventForm = () => {
           placeholder={"Write here what challenges face"}
         />
         <TextArea
+          value={event?.programDetails?.additionalInformation}
           itemName={"additionalInformation"}
           row={"h-28"}
           className={"col-span-12"}
@@ -319,9 +349,21 @@ const EventForm = () => {
         </h4>
 
         <div className="flex flex-col gap-3">
-          <StatisticsForm participateData={setCCC} title={"CCC"} />
-          <StatisticsForm participateData={setACG} title={"ACG"} />
-          <StatisticsForm participateData={setYES} title={"YES"} />
+          <StatisticsForm
+            value={event?.participants?.CCC}
+            participateData={setCCC}
+            title={"CCC"}
+          />
+          <StatisticsForm
+            value={event?.participants?.ACG}
+            participateData={setACG}
+            title={"ACG"}
+          />
+          <StatisticsForm
+            value={event?.participants?.YES}
+            participateData={setYES}
+            title={"YES"}
+          />
         </div>
       </div>
       <div className=" bg-white rounded-lg p-2 mt-2 ">
@@ -329,7 +371,10 @@ const EventForm = () => {
           External (Direct other participants)
         </h4>
         <div className="">
-          <StatisticsForm participateData={setExtra} />
+          <StatisticsForm
+            value={event?.participants?.extra}
+            participateData={setExtra}
+          />
         </div>
       </div>
       <div className="flex justify-end mb-5 ">
@@ -346,18 +391,17 @@ const EventForm = () => {
           Total
         </h4>
         <div className="">
-          <StatisticsTotal total={total} />
+          <StatisticsTotal value={event?.participants?.total} total={total} />
         </div>
       </div>
       <div className="flex justify-end mt-5 ">
         <input
           type="submit"
-          value="Submit"
+          value="Update"
           className="bg-gradient-to-r to-[#153170] from-[#1959EA] text-right rounded-lg  py-3 px-20 text-[28px] text-white font-bold cursor-pointer"
         />
       </div>
     </form>
   );
 };
-
-export default EventForm;
+export default EditEvent;

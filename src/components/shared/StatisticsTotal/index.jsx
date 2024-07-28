@@ -1,4 +1,4 @@
-const StatisticsTotal = ({ title, total }) => {
+const StatisticsTotal = ({ title, total, value }) => {
   return (
     <div className="mb-3">
       <h2 className="text-center border-b pb-2 border-b-blue  font-bold text-base text-[#003ED3]">

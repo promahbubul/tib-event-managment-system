@@ -9,8 +9,11 @@ const initialState = {
   total: 0,
 };
 
-const StatisticsForm = ({ title, participateData }) => {
-  const [participant, dispatch] = useReducer(reducer, initialState);
+const StatisticsForm = ({ title, participateData, value }) => {
+  const [participant, dispatch] = useReducer(
+    reducer,
+    value ? value : initialState
+  );
 
   participateData && participateData(participant);
 
