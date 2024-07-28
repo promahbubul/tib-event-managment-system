@@ -4,6 +4,7 @@ import { EventForm, EventReport, Home, ProgressStatus } from "../pages";
 import EditEvent from "../pages/EditEvent";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
+import ViewEvent from "../pages/ViewEvent";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -39,6 +40,12 @@ const PrivetRoute = createBrowserRouter([
           fetch(`http://localhost:5000/api/v1/event/${params.id}`),
       },
     ],
+  },
+  {
+    path: "/event/view/:id",
+    element: <ViewEvent />,
+    loader: ({ params }) =>
+      fetch(`http://localhost:5000/api/v1/event/${params.id}`),
   },
 ]);
 

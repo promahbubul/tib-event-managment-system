@@ -65,7 +65,10 @@ const EventList = ({ events }) => {
                 <Link to={`/dashboard/event/edit/${event?._id}`}>
                   <FaPen className="text-lg text-green cursor-pointer" />
                 </Link>
-                <PiEyeFill className="text-lg text-LightBlue cursor-pointer" />
+                <Link to={`/event/view/${event?._id}`}>
+                  <PiEyeFill className="text-lg text-LightBlue cursor-pointer" />
+                </Link>
+
                 <FaTrash
                   onClick={() => handleDeleteEvent(event?._id)}
                   className="text-lg text-red-500 cursor-pointer"
