@@ -3,12 +3,21 @@ const routePath = {
   eventForm: "event-form",
   eventReport: "event-report",
   progressStatus: "progress-status",
+  user: "user",
+  allUser: "all-user",
+  addUser: "add-user",
 };
 const sidenav = [
   { id: 1, title: "Home", path: routePath.home },
   { id: 2, title: "Event Form", path: routePath.eventForm },
   { id: 3, title: "Event Report", path: routePath.eventReport },
   { id: 4, title: "Progress Status", path: routePath.progressStatus },
+  { id: 5, title: "User", path: routePath.user },
 ];
 
-export { sidenav, routePath };
+const userSubNav = [
+  { id: 1, title: "All User", path: routePath.allUser },
+  { id: 2, title: "Add User", path: routePath.addUser },
+];
+
+export { sidenav, routePath, userSubNav };

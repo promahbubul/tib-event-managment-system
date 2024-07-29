@@ -1,10 +1,21 @@
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import logo from "../assets/images/logo/logo-without-bg.png";
 import { routePath, sidenav } from "../constant/sidenav.constant";
 import Footer from "../components/shared/Footer";
+import ErrorPage from "../pages/ErrorPage";
+import UserSubNav from "../components/Sidebar/UserSubNav";
 const MainLayout = () => {
   const location = useLocation();
 
+  if (location.pathname === "/dashboard/") {
+    return <ErrorPage />;
+  }
   return (
     <div className="flex flex-row font-poppins">
       {/* Sidebar */}
@@ -12,17 +23,48 @@ const MainLayout = () => {
         <img src={logo} alt="" className="pt-4 w-24 mb-4  mx-auto" />
         <div className="flex flex-col ">
           {sidenav.map((item) => (
-            <NavLink
-              className={({ isActive }) =>
-                isActive
-                  ? "text-2xl font-medium bg-navyBlue pl-8 py-3 border-b first:border-t  border-blue4 "
-                  : "text-2xl font-medium  pl-8 py-3 border-b first:border-t  border-blue4 "
-              }
-              key={item.id}
-              to={item.path}
-            >
-              {item.title}
-            </NavLink>
+            <div className=" group">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-2xl block font-medium bg-navyBlue pl-8 py-3 border-b first:border-t  border-blue4 "
+                    : location.pathname === "/dashboard/user/add-user" &&
+                      item.title === "User"
+                    ? "text-2xl block font-medium bg-navyBlue pl-8 py-3 border-b first:border-t  border-blue4 "
+                    : "text-2xl block group font-medium  pl-8 py-3 border-b first:border-t  border-blue4 hover:bg-navyBlue  "
+                }
+                key={item.id}
+                to={
+                  item.path === "user"
+                    ? `/dashboard/${item.path}/all-user`
+                    : item.path
+                }
+              >
+                {item.title}
+              </NavLink>
+
+              {/* {item.title === "User" ? (
+                <div className=" flex-col group-hover:flex hidden ">
+                  <UserSubNav />
+                </div>
+              ) : (
+                ""
+              )} */}
+              {item.title === "User" &&
+              (location.pathname === "/dashboard/user/all-user" ||
+                location.pathname === "/dashboard/user/add-user") ? (
+                <div className=" flex-col flex  ">
+                  <UserSubNav />
+                </div>
+              ) : item.title === "User" ? (
+                <div className=" flex-col group-hover:flex hidden  ">
+                  <UserSubNav />
+                </div>
+              ) : (
+                ""
+              )}
+              {/* {location.pathname === "/dashboard/user/all-user" ? "yes" : "no"} */}
+            </div>
           ))}
         </div>
       </div>
@@ -31,14 +73,20 @@ const MainLayout = () => {
         <nav className="bg-navyBlue text-white py-3 shadow-md shadow-navyBlue px-2 flex  justify-between flex-row items-center w-full">
           <div className=" w-10/12">
             <h1 className=" underline text-center text-lg font-medium">
-              {location.pathname === routePath.home
+              {location.pathname === `/dashboard/${routePath.home}`
                 ? "Home Page"
-                : location.pathname === routePath.eventForm
+                : location.pathname === `/dashboard/${routePath.eventForm}`
                 ? "Event Form Page"
-                : location.pathname === routePath.eventReport
+                : location.pathname === `/dashboard/${routePath.eventReport}`
                 ? "Event Report Page"
-                : location.pathname === routePath.progressStatus
+                : location.pathname === `/dashboard/${routePath.progressStatus}`
                 ? "Progress Status Page"
+                : location.pathname === `/dashboard/${routePath.user}`
+                ? "User Page"
+                : location.pathname === `/dashboard/user/${routePath.allUser}`
+                ? "All User Page"
+                : location.pathname === `/dashboard/user/${routePath.addUser}`
+                ? "Add User Page"
                 : "Page"}
             </h1>
           </div>
