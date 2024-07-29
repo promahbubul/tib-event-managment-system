@@ -14,7 +14,11 @@ const ProgramDetails = () => {
         </View>
         <TableRaw
           title={"Objectives of the event"}
-          description={`1. adipisicing elit. Ipsum,tempore explicabo, 2. ea sit ipsam asperiores t fugiat `}
+          description={`1. adipisicing elit. Ipsum,tempore explicabo, 
+            2. ea sit ipsam asperiores t fugiat
+            2. ea sit ipsam asperiores t fugiat 
+            2. ea sit ipsam asperiores t fugiat 
+            2. ea sit ipsam asperiores t fugiat `}
         />
         <TableRaw title={"Major actions of the event"} description={``} />
         <TableRaw title={"Participant type"} description={``} />
@@ -63,39 +67,9 @@ Font.register({
 });
 // Create styles
 const styles = StyleSheet.create({
-  page: {
-    flexDirection: "column",
-    backgroundColor: "white",
-    fontFamily: "tinos",
-    fontWeight: "normal",
-    fontSize: "12px",
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-    border: "2px solid red",
-  },
-  logoContiner: {
-    display: "flex",
-    justifyContent: "center",
-    alignContent: "center",
-    alignItems: "center",
-  },
-  logo: {
-    width: "90px",
-    textAlign: "center",
-  },
-  pageHeader: {
-    textAlign: "center",
-    fontSize: "16px",
-    fontFamily: "tinos",
-    fontWeight: "800",
-    marginTop: "10px",
-  },
   sectionTitle: {
-    fontSize: "14px",
-    fontWeight: 700,
+    fontSize: "12px",
+    fontStyle: "bold",
   },
   tableContainer: {
     border: "1px solid black",
@@ -131,7 +105,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     backgroundColor: "#faf5c5",
-    fontSize: "14px",
+    fontSize: "12px",
     fontWeight: "bold",
     alignContent: "center",
     alignItems: "center",

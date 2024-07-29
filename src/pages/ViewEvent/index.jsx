@@ -34,24 +34,46 @@ const ViewEvent = () => {
     >
       <Document title={event?.genInfo?.vanueName}>
         <Page size="A4" style={styles.page}>
-          {/* Header */}
           <View style={styles.section}>
-            <View style={styles.logoContiner}>
-              <Image style={styles.logo} src={logo} />
+            {/* Header */}
+            <View>
+              <View style={styles.logoContiner}>
+                <Image style={styles.logo} src={logo} />
+              </View>
+              <View style={styles.pageHeader}>
+                <Text>Event Report Format- PACTA</Text>
+                <br />
+                <Text>Transparency International Bangladesh</Text>
+              </View>
+              {/* General Information */}
+              <GeneralInformation />
+              {/* Program Details */}
+              <ProgramDetails />
+              {/* Photos */}
+              <Photos />
+              {/* Participants */}
+              <Participants />
             </View>
-            <View style={styles.pageHeader}>
-              <Text>Event Report Format- PACTA</Text>
-              <br />
-              <Text>Transparency International Bangladesh</Text>
+            {/* Footer */}
+            <View style={styles.footer}>
+              {/* Footer Left */}
+              <View style={styles.footerLeft}>
+                <Text style={styles.footerContent}>Signature:</Text>
+                <Text style={styles.footerContent}>
+                  Report prepared by: Md. Habibur Rahman, AC-TIB
+                </Text>
+                <Text style={styles.footerContent}>Date: 29-Apr-24</Text>
+              </View>
+              {/* Footer Left */}
+              <View style={styles.footerRight}>
+                <Text style={styles.footerContent}>Signature:</Text>
+                <Text style={styles.footerContent}>
+                  Report endorsed by: Md. Areful Islam. {"\n"}
+                  Cluster Coordinator-CE, TIB
+                </Text>
+                <Text style={styles.footerContent}>Date: 29-Apr-24</Text>
+              </View>
             </View>
-            {/* General Information */}
-            <GeneralInformation />
-            {/* Program Details */}
-            <ProgramDetails />
-            {/* Photos */}
-            <Photos />
-            {/* Participants */}
-            <Participants />
           </View>
         </Page>
       </Document>
@@ -65,7 +87,7 @@ Font.register({
   family: "tinos",
   fonts: [
     { src: tinosRegular }, // font-style: normal, font-weight: normal
-    { src: tinosBold, fontStyle: "italic" },
+    { src: tinosBold, fontStyle: "bold" },
   ],
 });
 // Create styles
@@ -74,14 +96,15 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     backgroundColor: "white",
     fontFamily: "tinos",
-    fontWeight: "normal",
-    fontSize: "10px",
+    fontStyle: "normal",
+    fontSize: "10.5px",
   },
   section: {
-    margin: 10,
-    padding: 10,
+    margin: "20 50",
     flexGrow: 1,
-    border: "2px solid red",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
   logoContiner: {
     display: "flex",
@@ -95,14 +118,15 @@ const styles = StyleSheet.create({
   },
   pageHeader: {
     textAlign: "center",
-    fontSize: "16px",
+    fontSize: "15px",
     fontFamily: "tinos",
-    fontWeight: "800",
-    marginTop: "10px",
+    // fontWeight: "bold",
+    fontStyle: "bold",
+    marginTop: "6px",
   },
   sectionTitle: {
     fontSize: "13px",
-    fontWeight: 700,
+    fontStyle: "bold",
   },
   tableContainer: {
     display: "flex",
@@ -124,4 +148,18 @@ const styles = StyleSheet.create({
   lastContnt: {
     padding: "3px 5px",
   },
+  //   Footer
+  footer: {
+    display: "flex",
+    flexDirection: "row",
+    marginTop: "5px",
+    gap: "10",
+  },
+  footerLeft: {
+    width: "50%",
+  },
+  footerRight: {
+    width: "50%",
+  },
+  footerContent: {},
 });

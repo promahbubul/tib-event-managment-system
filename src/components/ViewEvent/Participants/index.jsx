@@ -57,10 +57,10 @@ export default Participants;
 
 const styles = StyleSheet.create({
   sectionTitle: {
-    fontSize: "14px",
-    fontWeight: "bold",
+    fontSize: "12px",
     display: "flex",
     flexDirection: "row",
+    fontStyle: "bold",
   },
   sectionSpan: {
     fontWeight: "thin",
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     backgroundColor: "#faf5c5",
-    fontSize: "14px",
+    fontSize: "12px",
     fontWeight: "bold",
     alignContent: "center",
     alignItems: "center",
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   headingData: {},
   category: {
     width: "35%",
-    padding: "3px 10px",
+    padding: "2px 10px",
     borderRight: "0.5px dashed black",
     borderBottom: "0.5px dashed black",
   },
@@ -156,7 +156,6 @@ const styles = StyleSheet.create({
   tableRow: {
     display: "flex",
     flexDirection: "row",
-
     width: "100%",
     justifyContent: "center",
     alignItems: "center",

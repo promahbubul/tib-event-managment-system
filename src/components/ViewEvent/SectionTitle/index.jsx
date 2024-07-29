@@ -60,58 +60,28 @@ Font.register({
 });
 // Create styles
 const styles = StyleSheet.create({
-  page: {
-    flexDirection: "column",
-    backgroundColor: "white",
-    fontFamily: "tinos",
-    fontWeight: "normal",
-    fontSize: "12px",
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-    border: "2px solid red",
-  },
-  logoContiner: {
-    display: "flex",
-    justifyContent: "center",
-    alignContent: "center",
-    alignItems: "center",
-  },
-  logo: {
-    width: "90px",
-    textAlign: "center",
-  },
-  pageHeader: {
-    textAlign: "center",
-    fontSize: "16px",
-    fontFamily: "tinos",
-    fontWeight: "800",
-    marginTop: "10px",
-  },
   sectionTitle: {
-    fontSize: "14px",
-    fontWeight: 700,
+    fontSize: "12px",
+    fontStyle: "bold",
   },
   tableContainer: {
     display: "flex",
     flexDirection: "row",
-    border: "1px dashed black",
+    border: "0.8px dashed black",
   },
   tableRowLeft: {
     width: "50%",
   },
   tableRowLeftRight: {
     width: "50%",
-    borderLeft: "1px dashed black",
+    borderLeft: "0.8px dashed black",
   },
   content: {
-    borderBottom: "1px dashed black",
-    padding: "3px 5px",
+    borderBottom: "0.8px dashed black",
+    padding: "2px 3px",
   },
 
   lastContnt: {
-    padding: "3px 5px",
+    padding: "2px 3px",
   },
 });
