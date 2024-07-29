@@ -1,13 +1,39 @@
 import { StyleSheet, Text, View } from "@react-pdf/renderer";
 
-const RowContentContainer = ({ title }) => {
+const RowContentContainer = ({ title, participant }) => {
   return (
     <View style={styles.rowContentContainer}>
       <Text style={styles.rowContentHeader}>{title}</Text>
-      <Text style={styles.commonRowData}>01</Text>
-      <Text style={styles.commonRowData}>00</Text>
-      <Text style={styles.commonRowData}>04</Text>
-      <Text style={styles.rowMarzinalizedData}>00</Text>
+      <Text style={styles.commonRowData}>
+        {participant?.male
+          ? participant?.male < 10
+            ? `0${participant.male}`
+            : participant?.male
+          : "00"}
+      </Text>
+      <Text style={styles.commonRowData}>
+        {participant?.female
+          ? participant?.female < 10
+            ? `0${participant.female}`
+            : participant?.female
+          : "00"}
+      </Text>
+      <Text style={styles.commonRowData}>
+        {" "}
+        {participant?.total
+          ? participant?.total < 10
+            ? `0${participant.total}`
+            : participant?.total
+          : "00"}
+      </Text>
+      <Text style={styles.rowMarzinalizedData}>
+        {" "}
+        {participant?.marginalized
+          ? participant?.marginalized < 10
+            ? `0${participant.marginalized}`
+            : participant?.marginalized
+          : "00"}
+      </Text>
     </View>
   );
 };

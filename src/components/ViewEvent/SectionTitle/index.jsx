@@ -1,48 +1,55 @@
 import { Font, StyleSheet, Text, View } from "@react-pdf/renderer";
 import tinosRegular from "../../../assets/fonts/Tinos-Regular.ttf";
 import tinosBold from "../../../assets/fonts/Tinos-Bold.ttf";
-const GeneralInformation = () => {
+import moment from "moment";
+const GeneralInformation = ({ genInfo }) => {
   return (
     <View>
       <Text style={styles.sectionTitle}>1. General Information: </Text>
       <View style={styles.tableContainer}>
         {/* Left */}
         <View style={styles.tableRowLeft}>
-          <Text style={styles.content}>Name of CCC: Mymensingh</Text>
-          <Text style={styles.content}>Name of Cluster: Sylhet</Text>
+          <Text style={styles.content}>Name of CCC: {genInfo?.cccName}</Text>
           <Text style={styles.content}>
-            Name of event: Community Action Meeting
+            Name of Cluster: {genInfo?.clusterName}
+          </Text>
+          <Text style={styles.content}>
+            Name of event: {genInfo?.eventName}
           </Text>
           <Text style={styles.content}>
             Type of event: Discussion meeting with community
           </Text>
           <Text style={styles.content}>
-            Name of vanue: Char Ishardia, Mymensingh sadar
+            Name of vanue: {genInfo?.vanueName}
           </Text>
           <Text style={styles.content}>
-            Event start data: 18-Apr-2024 <br />
-            Start time: 03:00 PM
+            Event start data:{" "}
+            {moment(genInfo?.startEventDate).format("DD-MMM-YY")} {"\n"}Start
+            time: {moment(genInfo?.startEventTime, "HH,mm").format("HH:mm A ")}
           </Text>
-          <Text style={styles.lastContnt}>Follow up: 19 Feb 2024</Text>
+          <Text style={styles.lastContnt}>Follow up date: 19 Feb 2024</Text>
         </View>
         {/* Right */}
         <View style={styles.tableRowLeftRight}>
-          <Text style={styles.content}>Name of CCC: Mymensingh</Text>
-          <Text style={styles.content}>Name of Cluster: Sylhet</Text>
           <Text style={styles.content}>
-            Name of event: Community Action Meeting
+            Type of initiative: {genInfo?.initiativeType}
           </Text>
           <Text style={styles.content}>
-            Type of event: Discussion meeting with community
+            if(it's joint initiative) With whom: N/A
+          </Text>
+          <Text style={styles.content}>Sector: {genInfo?.sectorName} </Text>
+          <Text style={styles.content}>
+            Sub-sector: {genInfo?.subSectorName}
           </Text>
           <Text style={styles.content}>
-            Name of vanue: Char Ishardia, Mymensingh sadar
+            Meeting with whom: {genInfo?.meetingWithWhom}
           </Text>
           <Text style={styles.content}>
-            Event start data: 18-Apr-2024 <br />
-            Start time: 03:00 PM
+            Event ending data:{" "}
+            {moment(genInfo?.endEventDate).format("DD-MMM-YY")} {"\n"}Ending
+            time: {moment(genInfo?.endEventTime, "hh,mm").format("hh:mm A ")}
           </Text>
-          <Text style={styles.lastContnt}>Follow up: 19 Feb 2024</Text>
+          <Text style={styles.lastContnt}>Follow up issue: 19 Feb 2024</Text>
         </View>
       </View>
     </View>

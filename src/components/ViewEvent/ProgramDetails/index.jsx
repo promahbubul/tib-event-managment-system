@@ -2,7 +2,7 @@ import { Font, StyleSheet, Text, View } from "@react-pdf/renderer";
 import tinosRegular from "../../../assets/fonts/Tinos-Regular.ttf";
 import tinosBold from "../../../assets/fonts/Tinos-Bold.ttf";
 import TableRaw from "./TableRaw";
-const ProgramDetails = () => {
+const ProgramDetails = ({ programs }) => {
   return (
     <View>
       <Text style={styles.sectionTitle}>2. Program details: </Text>
@@ -14,28 +14,53 @@ const ProgramDetails = () => {
         </View>
         <TableRaw
           title={"Objectives of the event"}
-          description={`1. adipisicing elit. Ipsum,tempore explicabo, 
-            2. ea sit ipsam asperiores t fugiat
-            2. ea sit ipsam asperiores t fugiat 
-            2. ea sit ipsam asperiores t fugiat 
-            2. ea sit ipsam asperiores t fugiat `}
+          description={`${programs.eventObjectives}`}
         />
-        <TableRaw title={"Major actions of the event"} description={``} />
-        <TableRaw title={"Participant type"} description={``} />
-        <TableRaw title={"Chief guest (if any)"} description={``} />
-        <TableRaw title={"Chairperson (if any)"} description={``} />
-        <TableRaw title={"Immediate results (if any)"} description={``} />
-        <TableRaw title={"Number of issue raised (if any)"} description={``} />
-        <TableRaw title={"Name of raised issues"} description={``} />
-        <TableRaw title={"# of commitment made"} description={``} />
+        <TableRaw
+          title={"Major actions of the event"}
+          description={programs?.eventActions}
+        />
+        <TableRaw
+          title={"Participant type"}
+          description={"Internal and External"}
+        />
+        <TableRaw
+          title={"Chief guest (if any)"}
+          description={programs?.guest}
+        />
+        <TableRaw
+          title={"Chairperson (if any)"}
+          description={programs?.chairperson}
+        />
+        <TableRaw
+          title={"Immediate results (if any)"}
+          description={programs?.immediateResults}
+        />
+        <TableRaw
+          title={"Number of issue raised (if any)"}
+          description={`Total issues raised= 10; # of issues raised by male= 01; # of issues raised by female= 09; # of issues raised by marginalized= 06`}
+        />
+        <TableRaw
+          title={"Name of raised issues"}
+          description={programs?.issuesName}
+        />
+        <TableRaw title={"# of commitment made"} description={""} />
         <TableRaw
           title={"Number of issue addressed (if any)"}
           description={``}
         />
-        <TableRaw title={"Name of addressed issues"} description={``} />
         <TableRaw
-          title={"Lessions learned (if any)"}
-          description={`United Hospital`}
+          title={"Name of addressed issues"}
+          description={programs?.issueAddressed}
+        />
+        <TableRaw
+          title={"Lessons learned (if any)"}
+          description={programs?.lessonsLearned}
+          lastRaw={true}
+        />
+        <TableRaw
+          title={"Challenges (if any)"}
+          description={`Integrating people`}
           lastRaw={true}
         />
       </View>

@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "@react-pdf/renderer";
 import RowContentContainer from "./CccRowContentContainer";
 
-const Participants = () => {
+const Participants = ({ participantList }) => {
   return (
     <View>
       <View style={styles.sectionTitle}>
@@ -25,9 +25,18 @@ const Participants = () => {
             <Text style={styles.internal}>Internal {"\n"}(Core actors)</Text>
             {/* Row Content Container CCC */}
             <View style={{ width: "80%" }}>
-              <RowContentContainer title={"CCC"} />
-              <RowContentContainer title={"CCC"} />
-              <RowContentContainer title={"CCC"} />
+              <RowContentContainer
+                participant={participantList.CCC}
+                title={"CCC"}
+              />
+              <RowContentContainer
+                participant={participantList.ACG}
+                title={"ACG"}
+              />
+              <RowContentContainer
+                participant={participantList.YES}
+                title={"YES"}
+              />
             </View>
           </View>
           {/* External Row */}
@@ -35,18 +44,68 @@ const Participants = () => {
             <Text style={styles.externals}>
               External (Direct other participants)
             </Text>
-            <Text style={styles.male}>0</Text>
-            <Text style={styles.female}>0</Text>
-            <Text style={styles.total}>0</Text>
-            <Text style={styles.marginalized}>0</Text>
+            <Text style={styles.male}>
+              {participantList.extra?.male
+                ? participantList.extra?.male < 10
+                  ? `0${participantList.extra?.male}`
+                  : participantList.extra?.male
+                : "00"}
+            </Text>
+            <Text style={styles.female}>
+              {" "}
+              {participantList.extra?.female
+                ? participantList.extra?.female < 10
+                  ? `0${participantList.extra?.female}`
+                  : participantList.extra?.female
+                : "00"}
+            </Text>
+            <Text style={styles.total}>
+              {participantList.extra?.total
+                ? participantList.extra?.total < 10
+                  ? `0${participantList.extra?.total}`
+                  : participantList.extra?.total
+                : "00"}
+            </Text>
+            <Text style={styles.marginalized}>
+              {participantList.extra?.marginalized
+                ? participantList.extra?.marginalized < 10
+                  ? `0${participantList.extra?.marginalized}`
+                  : participantList.extra?.marginalized
+                : "00"}
+            </Text>
           </View>
           {/* Total Row */}
           <View style={styles.tableRow}>
             <Text style={styles.grandTotal}>Total</Text>
-            <Text style={styles.totalMale}>0</Text>
-            <Text style={styles.totalFemale}>0</Text>
-            <Text style={styles.totalTotal}>0</Text>
-            <Text style={styles.totalMarginalized}>0</Text>
+            <Text style={styles.totalMale}>
+              {participantList.total?.male
+                ? participantList.total?.male < 10
+                  ? `0${participantList.total?.male}`
+                  : participantList.total?.male
+                : "00"}
+            </Text>
+            <Text style={styles.totalFemale}>
+              {participantList.total?.female
+                ? participantList.total?.female < 10
+                  ? `0${participantList.total?.female}`
+                  : participantList.total?.female
+                : "00"}
+            </Text>
+            <Text style={styles.totalTotal}>
+              {participantList.total?.total
+                ? participantList.total?.total < 10
+                  ? `0${participantList.total?.total}`
+                  : participantList.total?.total
+                : "00"}
+            </Text>
+            <Text style={styles.totalMarginalized}>
+              {" "}
+              {participantList.extra?.marginalized
+                ? participantList.extra?.marginalized < 10
+                  ? `0${participantList.extra?.marginalized}`
+                  : participantList.extra?.marginalized
+                : "00"}
+            </Text>
           </View>
         </View>
       </View>
@@ -97,30 +156,35 @@ const styles = StyleSheet.create({
     width: "35%",
     padding: "3px 10px",
     borderRight: "0.5px dashed black",
-    fontWeight: "extrabold",
+    fontStyle: "bold",
+    textAlign: "right",
   },
   totalMale: {
     width: "15%",
     padding: "3px 10px",
     borderRight: "0.5px dashed black",
     fontWeight: "extrabold",
+    textAlign: "right",
   },
   totalFemale: {
     width: "15%",
     padding: "3px 10px",
     borderRight: "0.5px dashed black",
     fontWeight: "extrabold",
+    textAlign: "right",
   },
   totalMarginalized: {
     width: "20  %",
     padding: "3px 10px",
     fontWeight: "extrabold",
+    textAlign: "right",
   },
   totalTotal: {
     width: "15%",
     padding: "3px 10px",
     borderRight: "0.5px dashed black",
     fontWeight: "extrabold",
+    textAlign: "right",
   },
   male: {
     width: "15%",

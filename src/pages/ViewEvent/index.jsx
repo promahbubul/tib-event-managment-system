@@ -46,13 +46,13 @@ const ViewEvent = () => {
                 <Text>Transparency International Bangladesh</Text>
               </View>
               {/* General Information */}
-              <GeneralInformation />
+              <GeneralInformation genInfo={event?.genInfo} />
               {/* Program Details */}
-              <ProgramDetails />
+              <ProgramDetails programs={event?.programDetails} />
               {/* Photos */}
               <Photos />
               {/* Participants */}
-              <Participants />
+              <Participants participantList={event?.participants} />
             </View>
             {/* Footer */}
             <View style={styles.footer}>
