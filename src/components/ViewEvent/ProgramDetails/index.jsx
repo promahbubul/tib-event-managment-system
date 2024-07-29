@@ -8,6 +8,10 @@ const ProgramDetails = () => {
       <Text style={styles.sectionTitle}>2. Program details: </Text>
       {/* Program Details */}
       <View style={styles.tableContainer}>
+        <View style={styles.tableHeading}>
+          <Text style={styles.rowHeadingRight}>Participant's Category</Text>
+          <Text style={styles.rowHeadingLeft}>Male</Text>
+        </View>
         <TableRaw
           title={"Objectives of the event"}
           description={`1. adipisicing elit. Ipsum,tempore explicabo, 2. ea sit ipsam asperiores t fugiat `}
@@ -27,7 +31,7 @@ const ProgramDetails = () => {
         <TableRaw title={"Name of addressed issues"} description={``} />
         <TableRaw
           title={"Lessions learned (if any)"}
-          description={``}
+          description={`United Hospital`}
           lastRaw={true}
         />
       </View>
@@ -36,12 +40,12 @@ const ProgramDetails = () => {
       <View style={styles.aditionalTableRaw}>
         <View style={styles.tableRawLeft}>
           <Text style={styles.contentLeft}>
-            Aditional information/ <br /> Short breif of the event
+            Aditional information/ {"\n"}Short breif of the event
           </Text>
         </View>
         <View style={styles.tableRawRight}>
           {" "}
-          <Text style={styles.contentRight}>{"description"}</Text>
+          <Text style={styles.contentRight}>{"N/A"}</Text>
         </View>
       </View>
     </View>
@@ -94,13 +98,13 @@ const styles = StyleSheet.create({
     fontWeight: 700,
   },
   tableContainer: {
-    border: "1px dashed black",
+    border: "1px solid black",
   },
   tableRaw: {
     display: "flex",
     flexDirection: "row",
-    // border: "1px dashed black",
-    borderBottom: "1px dashed black",
+    // border: "1px solid black",
+    borderBottom: "1px solid black",
   },
 
   tableRawLeft: {
@@ -109,7 +113,7 @@ const styles = StyleSheet.create({
   },
   tableRawRight: {
     width: "60%",
-    borderLeft: "1px dashed black",
+    borderLeft: "1px solid black",
     padding: "3px 5px",
   },
 
@@ -117,8 +121,30 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     marginTop: "10px",
-    border: "1px dashed black",
+    border: "1px solid black",
   },
   contentLeft: {},
   contentRight: {},
+
+  //   Table Heading
+  tableHeading: {
+    display: "flex",
+    flexDirection: "row",
+    backgroundColor: "#faf5c5",
+    fontSize: "14px",
+    fontWeight: "bold",
+    alignContent: "center",
+    alignItems: "center",
+  },
+  rowHeadingRight: {
+    width: "40%",
+    padding: "3px 10px",
+    borderRight: "0.5px solid black",
+    borderBottom: "0.5px solid black",
+  },
+  rowHeadingLeft: {
+    width: "60%",
+    padding: "3px 10px",
+    borderBottom: "0.5px solid black",
+  },
 });

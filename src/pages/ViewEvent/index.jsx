@@ -17,6 +17,8 @@ import { useLoaderData } from "react-router-dom";
 import SectionTitle from "../../components/ViewEvent/SectionTitle";
 import GeneralInformation from "../../components/ViewEvent/SectionTitle";
 import ProgramDetails from "../../components/ViewEvent/ProgramDetails";
+import Photos from "../../components/ViewEvent/Photos";
+import Participants from "../../components/ViewEvent/Participants";
 
 const ViewEvent = () => {
   const event = useLoaderData();
@@ -46,6 +48,10 @@ const ViewEvent = () => {
             <GeneralInformation />
             {/* Program Details */}
             <ProgramDetails />
+            {/* Photos */}
+            <Photos />
+            {/* Participants */}
+            <Participants />
           </View>
         </Page>
       </Document>
