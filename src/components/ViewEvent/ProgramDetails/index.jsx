@@ -1,16 +1,18 @@
-import { Font, StyleSheet, Text, View } from "@react-pdf/renderer";
-import tinosRegular from "../../../assets/fonts/Tinos-Regular.ttf";
-import tinosBold from "../../../assets/fonts/Tinos-Bold.ttf";
+import { Text, View } from "@react-pdf/renderer";
 import TableRaw from "./TableRaw";
+import { programStyle } from "../../../constant/Stylesheets.constant";
+
 const ProgramDetails = ({ programs }) => {
   return (
     <View>
-      <Text style={styles.sectionTitle}>2. Program details: </Text>
+      <Text style={programStyle.sectionTitle}>2. Program details: </Text>
       {/* Program Details */}
-      <View style={styles.tableContainer}>
-        <View style={styles.tableHeading}>
-          <Text style={styles.rowHeadingRight}>Participant's Category</Text>
-          <Text style={styles.rowHeadingLeft}>Male</Text>
+      <View style={programStyle.tableContainer}>
+        <View style={programStyle.tableHeading}>
+          <Text style={programStyle.rowHeadingRight}>
+            Participant's Category
+          </Text>
+          <Text style={programStyle.rowHeadingLeft}>Male</Text>
         </View>
         <TableRaw
           title={"Objectives of the event"}
@@ -66,84 +68,18 @@ const ProgramDetails = ({ programs }) => {
       </View>
       {/* Additional Information */}
 
-      <View style={styles.aditionalTableRaw}>
-        <View style={styles.tableRawLeft}>
-          <Text style={styles.contentLeft}>
+      <View style={programStyle.aditionalTableRaw}>
+        <View style={programStyle.tableRawLeft}>
+          <Text style={programStyle.contentLeft}>
             Aditional information/ {"\n"}Short breif of the event
           </Text>
         </View>
-        <View style={styles.tableRawRight}>
+        <View style={programStyle.tableRawRight}>
           {" "}
-          <Text style={styles.contentRight}>{"N/A"}</Text>
+          <Text style={programStyle.contentRight}>{"N/A"}</Text>
         </View>
       </View>
     </View>
   );
 };
 export default ProgramDetails;
-
-// Fonts
-Font.register({
-  family: "tinos",
-  fonts: [
-    { src: tinosRegular }, // font-style: normal, font-weight: normal
-    { src: tinosBold, fontStyle: "italic" },
-  ],
-});
-// Create styles
-const styles = StyleSheet.create({
-  sectionTitle: {
-    fontSize: "12px",
-    fontStyle: "bold",
-  },
-  tableContainer: {
-    border: "1px solid black",
-  },
-  tableRaw: {
-    display: "flex",
-    flexDirection: "row",
-    // border: "1px solid black",
-    borderBottom: "1px solid black",
-  },
-
-  tableRawLeft: {
-    width: "40%",
-    padding: "3px 5px",
-  },
-  tableRawRight: {
-    width: "60%",
-    borderLeft: "1px solid black",
-    padding: "3px 5px",
-  },
-
-  aditionalTableRaw: {
-    display: "flex",
-    flexDirection: "row",
-    marginTop: "10px",
-    border: "1px solid black",
-  },
-  contentLeft: {},
-  contentRight: {},
-
-  //   Table Heading
-  tableHeading: {
-    display: "flex",
-    flexDirection: "row",
-    backgroundColor: "#faf5c5",
-    fontSize: "12px",
-    fontWeight: "bold",
-    alignContent: "center",
-    alignItems: "center",
-  },
-  rowHeadingRight: {
-    width: "40%",
-    padding: "3px 10px",
-    borderRight: "0.5px solid black",
-    borderBottom: "0.5px solid black",
-  },
-  rowHeadingLeft: {
-    width: "60%",
-    padding: "3px 10px",
-    borderBottom: "0.5px solid black",
-  },
-});

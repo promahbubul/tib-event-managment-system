@@ -1,7 +1,7 @@
-import { Font, StyleSheet, Text, View } from "@react-pdf/renderer";
-import tinosRegular from "../../../assets/fonts/Tinos-Regular.ttf";
-import tinosBold from "../../../assets/fonts/Tinos-Bold.ttf";
+import { Text, View } from "@react-pdf/renderer";
 import moment from "moment";
+import styles from "../../../constant/Stylesheets.constant";
+
 const GeneralInformation = ({ genInfo }) => {
   return (
     <View>
@@ -56,39 +56,3 @@ const GeneralInformation = ({ genInfo }) => {
   );
 };
 export default GeneralInformation;
-
-// Fonts
-Font.register({
-  family: "tinos",
-  fonts: [
-    { src: tinosRegular }, // font-style: normal, font-weight: normal
-    { src: tinosBold, fontStyle: "italic" },
-  ],
-});
-// Create styles
-const styles = StyleSheet.create({
-  sectionTitle: {
-    fontSize: "12px",
-    fontStyle: "bold",
-  },
-  tableContainer: {
-    display: "flex",
-    flexDirection: "row",
-    border: "0.8px dashed black",
-  },
-  tableRowLeft: {
-    width: "50%",
-  },
-  tableRowLeftRight: {
-    width: "50%",
-    borderLeft: "0.8px dashed black",
-  },
-  content: {
-    borderBottom: "0.8px dashed black",
-    padding: "2px 3px",
-  },
-
-  lastContnt: {
-    padding: "2px 3px",
-  },
-});
