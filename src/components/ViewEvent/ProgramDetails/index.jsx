@@ -68,7 +68,7 @@ const ProgramDetails = ({ programs }) => {
       </View>
       {/* Additional Information */}
 
-      <View style={programStyle.aditionalTableRaw}>
+      <View style={programStyle.additionalTableRaw}>
         <View style={programStyle.tableRawLeft}>
           <Text style={programStyle.contentLeft}>
             Aditional information/ {"\n"}Short breif of the event

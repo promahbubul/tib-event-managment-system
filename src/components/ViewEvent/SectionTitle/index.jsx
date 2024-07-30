@@ -27,7 +27,7 @@ const GeneralInformation = ({ genInfo }) => {
             {moment(genInfo?.startEventDate).format("DD-MMM-YY")} {"\n"}Start
             time: {moment(genInfo?.startEventTime, "HH,mm").format("HH:mm A ")}
           </Text>
-          <Text style={styles.lastContnt}>Follow up date: 19 Feb 2024</Text>
+          <Text style={styles.lastContent}>Follow up date: 19 Feb 2024</Text>
         </View>
         {/* Right */}
         <View style={styles.tableRowLeftRight}>
@@ -49,7 +49,7 @@ const GeneralInformation = ({ genInfo }) => {
             {moment(genInfo?.endEventDate).format("DD-MMM-YY")} {"\n"}Ending
             time: {moment(genInfo?.endEventTime, "hh,mm").format("hh:mm A ")}
           </Text>
-          <Text style={styles.lastContnt}>Follow up issue: 19 Feb 2024</Text>
+          <Text style={styles.lastContent}>Follow up issue: 19 Feb 2024</Text>
         </View>
       </View>
     </View>

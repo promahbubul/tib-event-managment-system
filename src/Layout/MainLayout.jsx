@@ -89,7 +89,7 @@ const MainLayout = () => {
             </Link>
           </div>
         </nav>
-        <div className="h-[calc(100vh-120px)] overflow-auto ">
+        <div className="h-[calc(100vh-120px)] overflow-auto  ">
           <Outlet />
         </div>
         <Footer />

@@ -5,24 +5,45 @@ import { PiEyeFill } from "react-icons/pi";
 import Details from "./Details";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import ConfirmationModal from "../../shared/Modal/ConfirmationModal";
+import SuccessFullyModal from "../../shared/Modal/SuccessfullyModal";
 
 const EventList = ({ events }) => {
   const [eventData, setEventData] = useState(events);
-  const handleDeleteEvent = (id) => {
-    fetch(`http://localhost:5000/api/v1/event/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount > 0) {
-          alert("Deleted Successfully");
-          const newEventList = eventData.filter((event) => event._id !== id);
-          setEventData(newEventList);
-          console.log(newEventList);
-        }
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [successModal, setSuccessModal] = useState(false);
+  const [deleteId, setDeleteID] = useState(null);
+
+  // show delete modal
+  const handleConfirmDelete = (confirm) => {
+    if (confirm) {
+      fetch(`http://localhost:5000/api/v1/event/${deleteId}`, {
+        method: "DELETE",
       })
-      .catch((err) => console.log(err));
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            const newEventList = eventData.filter(
+              (event) => event._id !== deleteId
+            );
+            setDeleteModal(!deleteModal);
+            setSuccessModal(true);
+            setTimeout(() => {
+              setSuccessModal(false);
+            }, 1800);
+            setEventData(newEventList);
+            console.log(newEventList);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   };
+
+  const handleDeleteEvent = (id) => {
+    setDeleteModal(!deleteModal);
+    setDeleteID(id);
+  };
+
   return (
     <div className=" justify-between gap-2 mt-3">
       {/* Heading */}
@@ -65,7 +86,7 @@ const EventList = ({ events }) => {
                 <Link to={`/dashboard/event/edit/${event?._id}`}>
                   <FaPen className="text-lg text-green cursor-pointer" />
                 </Link>
-                <Link to={`/event/view/${event?._id}`}>
+                <Link target="_blank" to={`/event/view/${event?._id}`}>
                   <PiEyeFill className="text-lg text-LightBlue cursor-pointer" />
                 </Link>
 
@@ -94,6 +115,14 @@ const EventList = ({ events }) => {
           </div>
         ))}
       </div>
+      {/* Delete Modal */}
+      {deleteModal && (
+        <ConfirmationModal
+          confirm={handleConfirmDelete}
+          close={setDeleteModal}
+        />
+      )}
+      {successModal && <SuccessFullyModal close={setSuccessModal} />}
     </div>
   );
 };

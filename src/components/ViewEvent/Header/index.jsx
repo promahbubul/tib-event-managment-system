@@ -5,7 +5,7 @@ import styles from "../../../constant/Stylesheets.constant";
 const Header = () => {
   return (
     <View>
-      <View style={styles.logoContiner}>
+      <View style={styles.logoContainer}>
         <Image style={styles.logo} src={logo} />
       </View>
       <View style={styles.pageHeader}>

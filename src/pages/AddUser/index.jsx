@@ -1,61 +1,128 @@
+import { Link } from "react-router-dom";
+import { DropDown } from "../../components/shared";
+import { userStatus, userType } from "../../constant/User.constant";
 import { useState } from "react";
+import { FaEye } from "react-icons/fa6";
+import { FaEyeSlash } from "react-icons/fa";
+import SuccessFullyModal from "../../components/shared/Modal/SuccessfullyModal";
 
 const AddUser = () => {
-  const [imagesData, setImagesData] = useState([]);
-  const handleFormSubmit = async (e) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleAddUser = (e) => {
     e.preventDefault();
-    const files = [
-      e.target.myImage1.files[0],
-      e.target.myImage2.files[0],
-      e.target.myImage3.files[0],
-    ];
+    const form = new FormData(e.target);
+    const name = form.get("name");
+    const number = form.get("number");
+    const email = form.get("email");
+    const password = form.get("password");
+    const userType = form.get("userType");
+    const userStatus = "Active";
+    const user = { name, number, email, password, userType, userStatus };
+    const userString = JSON.stringify(user);
 
-    const mmData = [];
+    fetch("http://localhost:5000/api/v1/user", {
+      method: "POST",
+      body: userString,
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          setSuccess(true);
+          setTimeout(() => {
+            setSuccess(false);
+          }, 1000);
+        }
+      })
+      .catch((err) => console.log(err));
 
-    const uploadFile = async (file) => {
-      if (!file) return;
-
-      const data = new FormData();
-      data.append("image", file);
-
-      try {
-        const response = await fetch(
-          "https://api.imgbb.com/1/upload?key=918613f4ce8f567723f80cb3e079b7cc",
-          {
-            method: "POST",
-            body: data,
-          }
-        );
-        const result = await response.json();
-        mmData.push(result.data.display_url);
-        setImagesData(mmData);
-        console.log(imagesData);
-        return result;
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    console.log(mmData);
-
-    // Create an array of promises for concurrent uploads
-    const uploadPromises = files.map((file) => uploadFile(file));
-
-    console.log(uploadPromises);
-
-    // Wait for all uploads to complete
-    await Promise.all(uploadPromises);
+    // console.log(user);
   };
-
-  console.log(imagesData);
   return (
-    <div>
-      <form onSubmit={handleFormSubmit}>
-        <input type="file" name="myImage2" id="" />
-        <input type="file" name="myImage1" id="" />
-        <input type="file" name="myImage3" id="" />
-        <input type="submit" value="Submit" />
-      </form>
+    <div className=" h-full overflow-auto  flex  bg-[#E3E3E8] ">
+      <div className="w-7/12    rounded-lg p-20    mx-auto">
+        <form onSubmit={handleAddUser} className="w-full gap-3   flex flex-col">
+          <input
+            type="text"
+            name="name"
+            className="bg-[#3F77F4]/10 placeholder:text-[#061E54] outline-none font-normal py-4 px-8 rounded-lg "
+            placeholder="Enter full name"
+            required
+          />
+          <input
+            type="tel"
+            name="number"
+            className="bg-[#3F77F4]/10 placeholder:text-[#061E54] outline-none font-normal py-4 px-8 rounded-lg "
+            placeholder="Enter phone number"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            className="bg-[#3F77F4]/10 placeholder:text-[#061E54] outline-none font-normal py-4 px-8 rounded-lg "
+            placeholder="Enter your email"
+            required
+          />
+          <input
+            type="number"
+            name="id"
+            className="bg-[#3F77F4]/10 placeholder:text-[#061E54] outline-none font-normal py-4 px-8 rounded-lg "
+            placeholder="Enter id number"
+            required
+          />
+          <div className="relative ">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              className="bg-[#3F77F4]/10 w-full placeholder:text-[#061E54] outline-none font-normal py-4 px-8 rounded-lg "
+              placeholder="Enter your password"
+              required
+            />
+            <button
+              onClick={() => setShowPassword(!showPassword)}
+              type="button"
+              className="absolute -translate-y-1/2 top-1/2 text-2xl text-LightBlue
+             right-5"
+            >
+              {showPassword ? FaEye() : FaEyeSlash()}
+            </button>
+          </div>
+          <div className="flex flex-row items-center">
+            <label htmlFor="" className="w-3/12 font-bold text-lg text-blue">
+              User Type:
+            </label>
+            <DropDown
+              options={userType}
+              itemName={"userType"}
+              className={"p-0 w-full "}
+              dropBG={""}
+              inputClass={"py-4 px-8 bg-[#3F77F4]/10"}
+            />
+          </div>
+          {/* <div className="flex flex-row items-center">
+            <label htmlFor="" className="w-3/12 font-bold text-lg text-blue">
+              User Status:
+            </label>
+            <DropDown
+              options={userStatus}
+              className={"p-0 w-full"}
+              inputClass={"py-4 px-8"}
+            />
+          </div> */}
+
+          <input
+            type="submit"
+            value="Add User"
+            className=" outline-none cursor-pointer  py-4 px-8 rounded-lg bg-gradient-to-tr hover:bg-gradient-to-bl duration-500 hover:duration-500 ease-in-out from-LightBlue to-blue text-white text-xl font-bold"
+          />
+        </form>
+        {/* User Add Success */}
+        {success && <SuccessFullyModal close={setSuccess} />}
+      </div>
     </div>
   );
 };

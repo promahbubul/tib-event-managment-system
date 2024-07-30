@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
 
   //   Header
-  logoContiner: {
+  logoContainer: {
     display: "flex",
     justifyContent: "center",
     alignContent: "center",
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     padding: "3px 5px",
   },
 
-  lastContnt: {
+  lastContent: {
     padding: "3px 5px",
   },
 
@@ -125,7 +125,7 @@ export const programStyle = StyleSheet.create({
     padding: "3px 5px",
   },
 
-  aditionalTableRaw: {
+  additionalTableRaw: {
     display: "flex",
     flexDirection: "row",
     marginTop: "10px",
@@ -183,7 +183,8 @@ export const photoStyle = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    width: "20px",
+    height: "20px",
+    width: "30px",
   },
 });
 
@@ -317,7 +318,7 @@ export const participantStyle = StyleSheet.create({
     width: "18.75%",
     textAlign: "right",
   },
-  rowMarzinalizedData: {
+  rowMarginalizedData: {
     width: "25%",
     textAlign: "right",
   },

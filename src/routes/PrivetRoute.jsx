@@ -43,6 +43,7 @@ const PrivetRoute = createBrowserRouter([
           {
             path: routePath.allUser,
             element: <AllUser />,
+            loader: () => fetch("http://localhost:5000/api/v1/user"),
           },
           {
             path: routePath.addUser,

@@ -10,9 +10,12 @@ const Photos = ({ photographs }) => {
       {/* Gallery Container */}
       <View style={photoStyle.galleryContainer}>
         {photographs ? (
-          photographs.map((photo) => (
-            <View key={photo?.id} style={photoStyle.card}>
-              <Image style={photoStyle.image} src={photo?.thumb?.url} />
+          photographs.map((photo, index) => (
+            <View key={index} style={photoStyle.card}>
+              <Image
+                style={photoStyle.image}
+                source={{ uri: photo?.thumb?.url }}
+              />
             </View>
           ))
         ) : (
@@ -22,6 +25,8 @@ const Photos = ({ photographs }) => {
             <View style={photoStyle.lastCard}></View>
           </>
         )}
+
+        {/* {photographs ? "Yes" : "No"} */}
       </View>
     </View>
   );
