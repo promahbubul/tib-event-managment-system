@@ -35,7 +35,7 @@ const EventList = ({ events }) => {
       {/* Event Table */}
       <div className="flex flex-col gap-0.5 mt-3 ">
         {eventData?.map((event) => (
-          <div className=" bg-white py-2 px-5 relative ">
+          <div key={event._id} className=" bg-white py-2 px-5 relative ">
             <input
               type="checkbox"
               name="dropdown"

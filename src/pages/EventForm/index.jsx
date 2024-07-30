@@ -14,18 +14,22 @@ import { CreateEventContext } from "../../context/EventContext";
 
 const EventForm = () => {
   const {
-    img1,
     CCC,
     ACG,
     YES,
     extra,
     total,
-    setImg1,
     setCCC,
     setACG,
     setYES,
     setExtra,
     setTotal,
+    image1,
+    image2,
+    image3,
+    setImage1,
+    setImage2,
+    setImage3,
   } = useContext(CreateEventContext);
 
   // set total
@@ -81,8 +85,8 @@ const EventForm = () => {
     const additionalInformation = form.additionalInformation.value;
 
     // Participants
-
     const participants = { CCC, ACG, YES, extra, total };
+
     const genInfo = {
       cccName,
       initiativeType,
@@ -111,8 +115,12 @@ const EventForm = () => {
       additionalInformation,
     };
 
-    console.log({ genInfo, programDetails, participants });
-    const event = { genInfo, programDetails, participants };
+    // Images
+    const photographs = [image1, image2, image3];
+    console.log(photographs);
+
+    // console.log({ genInfo, programDetails, participants, imageList });
+    const event = { genInfo, programDetails, participants, photographs };
     const eventString = JSON.stringify(event);
     fetch("http://localhost:5000/api/v1/event", {
       method: "POST",
@@ -147,8 +155,9 @@ const EventForm = () => {
         }
       })
       .catch((err) => console.log(err));
-    console.log(eventString);
+    console.log(event);
   };
+
   return (
     <form
       onSubmit={handleFormSubmit}
@@ -304,13 +313,23 @@ const EventForm = () => {
       <SectionHeading>Photographs</SectionHeading>
       <div className="grid grid-cols-12 mt-4 gap-4">
         <InputFile
-          name={"img1"}
-          setImg={setImg1}
-          img={img1}
+          image={image1}
+          setImage={setImage1}
+          name={"fileImage1"}
           className={"col-span-4"}
         />
-        <InputFile className={"col-span-4"} />
-        <InputFile className={"col-span-4"} />
+        <InputFile
+          image={image2}
+          setImage={setImage2}
+          name={"fileImage2"}
+          className={"col-span-4"}
+        />
+        <InputFile
+          image={image3}
+          setImage={setImage3}
+          name={"fileImage3"}
+          className={"col-span-4"}
+        />
       </div>
       <SectionHeading>Participants</SectionHeading>
       <div className=" bg-white rounded-lg p-2 mt-2 ">

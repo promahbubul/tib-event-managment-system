@@ -16,8 +16,8 @@ const sidenav = [
 ];
 
 const userSubNav = [
-  { id: 1, title: "All User", path: routePath.allUser },
-  { id: 2, title: "Add User", path: routePath.addUser },
+  { id: 6, title: "All User", path: routePath.allUser },
+  { id: 7, title: "Add User", path: routePath.addUser },
 ];
 
 export { sidenav, routePath, userSubNav };

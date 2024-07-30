@@ -31,7 +31,7 @@ const ViewEvent = () => {
               {/* Program Details */}
               <ProgramDetails programs={event?.programDetails} />
               {/* Photos */}
-              <Photos />
+              <Photos photographs={event?.photographs} />
               {/* Participants */}
               <Participants participantList={event?.participants} />
             </View>

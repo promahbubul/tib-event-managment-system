@@ -3,7 +3,6 @@ import {
   NavLink,
   Outlet,
   useLocation,
-  useNavigate,
 } from "react-router-dom";
 import logo from "../assets/images/logo/logo-without-bg.png";
 import { routePath, sidenav } from "../constant/sidenav.constant";
@@ -23,7 +22,7 @@ const MainLayout = () => {
         <img src={logo} alt="" className="pt-4 w-24 mb-4  mx-auto" />
         <div className="flex flex-col ">
           {sidenav.map((item) => (
-            <div className=" group">
+            <div key={item.id} className=" group">
               <NavLink
                 className={({ isActive }) =>
                   isActive
@@ -42,14 +41,6 @@ const MainLayout = () => {
               >
                 {item.title}
               </NavLink>
-
-              {/* {item.title === "User" ? (
-                <div className=" flex-col group-hover:flex hidden ">
-                  <UserSubNav />
-                </div>
-              ) : (
-                ""
-              )} */}
               {item.title === "User" &&
               (location.pathname === "/dashboard/user/all-user" ||
                 location.pathname === "/dashboard/user/add-user") ? (

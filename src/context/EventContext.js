@@ -10,6 +10,9 @@ const EventContext = ({ children }) => {
   const [YES, setYES] = useState(allParticipant.yes);
   const [extra, setExtra] = useState(allParticipant.extra);
   const [total, setTotal] = useState(allParticipant.total);
+  const [image1, setImage1] = useState(null);
+  const [image2, setImage2] = useState(null);
+  const [image3, setImage3] = useState(null);
 
   const values = {
     img1,
@@ -24,6 +27,12 @@ const EventContext = ({ children }) => {
     setYES,
     setExtra,
     setTotal,
+    image1,
+    image2,
+    image3,
+    setImage1,
+    setImage2,
+    setImage3,
   };
   return (
     <CreateEventContext.Provider value={values}>

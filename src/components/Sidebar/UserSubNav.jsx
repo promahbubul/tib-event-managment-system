@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 
 const UserSubNav = () => {
   const subNav = [
-    { id: 1, path: "user/all-user", title: "All Users" },
-    { id: 1, path: "user/add-user", title: "Add User" },
+    { id: 6, path: "user/all-user", title: "All Users" },
+    { id: 7, path: "user/add-user", title: "Add User" },
   ];
   return (
     <>
