@@ -2,12 +2,13 @@ import moment from "moment";
 import { useState } from "react";
 import { FaPen, FaTrash } from "react-icons/fa";
 import { PiEyeFill } from "react-icons/pi";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useLocation } from "react-router-dom";
 import ConfirmationModal from "../../components/shared/Modal/ConfirmationModal";
 import SuccessFullyModal from "../../components/shared/Modal/SuccessfullyModal";
 import QuickView from "../../components/AllUser/QuickView";
 
 const AllUser = () => {
+  const location = useLocation();
   const [users, setUsers] = useState(useLoaderData());
   const [showQuickView, setShowQuickView] = useState(false);
   const [deleteModal, setDeleModal] = useState(false);
@@ -66,12 +67,12 @@ const AllUser = () => {
       <div className="flex flex-col gap-0.5 mt-3 ">
         {users?.map((user) => (
           <div key={user._id} className=" bg-white py-2 px-5 relative ">
-            <input
+            {/* <input
               type="checkbox"
               name="dropdown"
               id="dropdown"
               className="peer/dropdown absolute z-0 inset-y-0 inset-x-0 bg-orange-500 border-2 opacity-0 border-red-500   "
-            />
+            /> */}
             {/* row */}
             <div
               key={user?._id}
@@ -86,7 +87,10 @@ const AllUser = () => {
                 {user?.userStatus}
               </p>
               <div className="col-span-1 text-right  relative z-10 justify-end flex flex-row items-center gap-5 ">
-                <Link to={`/dashboard/event/edit/${user?._id}`}>
+                <Link
+                  state={location?.pathname}
+                  to={`/dashboard/user/edit-user/${user?._id}`}
+                >
                   <FaPen className="text-lg text-green cursor-pointer" />
                 </Link>
                 <Link onClick={() => handleShowQuickView(user?._id)}>

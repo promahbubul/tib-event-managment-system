@@ -4,6 +4,7 @@ import { EventForm, EventReport, Home, ProgressStatus } from "../pages";
 import AddUser from "../pages/AddUser";
 import AllUser from "../pages/AllUser";
 import EditEvent from "../pages/EditEvent";
+import EditUser from "../pages/EditUser";
 import ErrorPage from "../pages/ErrorPage";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
@@ -44,6 +45,12 @@ const PrivetRoute = createBrowserRouter([
             path: routePath.allUser,
             element: <AllUser />,
             loader: () => fetch("http://localhost:5000/api/v1/user"),
+          },
+          {
+            path: routePath.editUser,
+            element: <EditUser />,
+            loader: ({ params }) =>
+              fetch(`http://localhost:5000/api/v1/user/${params.id}`),
           },
           {
             path: routePath.addUser,

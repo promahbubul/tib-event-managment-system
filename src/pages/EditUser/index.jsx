@@ -1,13 +1,19 @@
 import { DropDown } from "../../components/shared";
-import { userType } from "../../constant/User.constant";
+import { userStatus, userType } from "../../constant/User.constant";
 import { useState } from "react";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
 import SuccessFullyModal from "../../components/shared/Modal/SuccessfullyModal";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 
-const AddUser = () => {
+const EditUser = () => {
+  const user = useLoaderData();
+  const { state } = useLocation();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [success, setSuccess] = useState(false);
+
+  console.log(state);
 
   const handleAddUser = (e) => {
     e.preventDefault();
@@ -18,8 +24,8 @@ const AddUser = () => {
     const idCard = form.get("idCard");
     const password = form.get("password");
     const userType = form.get("userType");
-    const userStatus = "Active";
-    const user = {
+    const userStatus = form.get("userStatus");
+    const updateUser = {
       name,
       number,
       email,
@@ -28,10 +34,11 @@ const AddUser = () => {
       userStatus,
       idCard,
     };
-    const userString = JSON.stringify(user);
+    const userString = JSON.stringify(updateUser);
+    // console.log(user._id);
 
-    fetch("http://localhost:5000/api/v1/user", {
-      method: "POST",
+    fetch(`http://localhost:5000/api/v1/user/${user?._id}`, {
+      method: "PUT",
       body: userString,
       headers: {
         "Content-type": "application/json",
@@ -39,54 +46,61 @@ const AddUser = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.acknowledged) {
+        console.log(data);
+        if (data?.modifiedCount > 0) {
           setSuccess(true);
           setTimeout(() => {
             setSuccess(false);
+            navigate(state);
           }, 1000);
         }
       })
       .catch((err) => console.log(err));
 
-    // console.log(user);
+    // console.log(updateUser);
   };
   return (
     <div className=" h-full overflow-auto  flex  bg-[#E3E3E8] ">
       <div className="w-7/12    rounded-lg p-20    mx-auto">
-        <form onSubmit={handleAddUser} className="w-full gap-3   flex flex-col">
+        <form onSubmit={handleAddUser} className="w-full gap-2   flex flex-col">
           <input
+            defaultValue={user?.name}
             type="text"
             name="name"
-            className="bg-[#3F77F4]/10 placeholder:text-[#061E54] outline-none font-normal py-4 px-8 rounded-lg "
+            className="bg-[#3F77F4]/10 placeholder:text-[#061E54] outline-none font-normal py-3.5 px-8 rounded-lg "
             placeholder="Enter full name"
             required
           />
           <input
+            defaultValue={user?.number}
             type="tel"
             name="number"
-            className="bg-[#3F77F4]/10 placeholder:text-[#061E54] outline-none font-normal py-4 px-8 rounded-lg "
+            className="bg-[#3F77F4]/10 placeholder:text-[#061E54] outline-none font-normal py-3.5 px-8 rounded-lg "
             placeholder="Enter phone number"
             required
           />
           <input
+            defaultValue={user?.email}
             type="email"
             name="email"
-            className="bg-[#3F77F4]/10 placeholder:text-[#061E54] outline-none font-normal py-4 px-8 rounded-lg "
+            className="bg-[#3F77F4]/10 placeholder:text-[#061E54] outline-none font-normal py-3.5 px-8 rounded-lg "
             placeholder="Enter your email"
             required
           />
           <input
+            defaultValue={user?.idCard}
             type="number"
             name="idCard"
-            className="bg-[#3F77F4]/10 placeholder:text-[#061E54] outline-none font-normal py-4 px-8 rounded-lg "
+            className="bg-[#3F77F4]/10 placeholder:text-[#061E54] outline-none font-normal py-3.5 px-8 rounded-lg "
             placeholder="Enter id number"
             required
           />
           <div className="relative ">
             <input
+              defaultValue={user?.password}
               type={showPassword ? "text" : "password"}
               name="password"
-              className="bg-[#3F77F4]/10 w-full placeholder:text-[#061E54] outline-none font-normal py-4 px-8 rounded-lg "
+              className="bg-[#3F77F4]/10 w-full placeholder:text-[#061E54] outline-none font-normal py-3.5 px-8 rounded-lg "
               placeholder="Enter your password"
               required
             />
@@ -105,27 +119,30 @@ const AddUser = () => {
             </label>
             <DropDown
               options={userType}
+              value={user?.userType}
               itemName={"userType"}
               className={"p-0 w-full "}
               dropBG={""}
-              inputClass={"py-4 px-8 bg-[#3F77F4]/10"}
+              inputClass={"py-3.5 px-8 bg-[#3F77F4]/10"}
             />
           </div>
-          {/* <div className="flex flex-row items-center">
+          <div className="flex flex-row items-center">
             <label htmlFor="" className="w-3/12 font-bold text-lg text-blue">
               User Status:
             </label>
             <DropDown
               options={userStatus}
+              value={user?.userStatus}
               className={"p-0 w-full"}
-              inputClass={"py-4 px-8"}
+              itemName={"userStatus"}
+              inputClass={"py-3.5 px-8  bg-[#3F77F4]/10"}
             />
-          </div> */}
+          </div>
 
           <input
             type="submit"
-            value="Add User"
-            className=" outline-none cursor-pointer  py-4 px-8 rounded-lg bg-gradient-to-tr hover:bg-gradient-to-bl duration-500 hover:duration-500 ease-in-out from-LightBlue to-blue text-white text-xl font-bold"
+            value="Update User"
+            className=" outline-none cursor-pointer  py-3.5 px-8 rounded-lg bg-gradient-to-tr hover:bg-gradient-to-bl duration-500 hover:duration-500 ease-in-out from-LightBlue to-blue text-white text-xl font-bold"
           />
         </form>
         {/* User Add Success */}
@@ -134,4 +151,4 @@ const AddUser = () => {
     </div>
   );
 };
-export default AddUser;
+export default EditUser;

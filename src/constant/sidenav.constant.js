@@ -6,6 +6,7 @@ const routePath = {
   user: "user",
   allUser: "all-user",
   addUser: "add-user",
+  editUser: "edit-user/:id",
 };
 const sidenav = [
   { id: 1, title: "Home", path: routePath.home },

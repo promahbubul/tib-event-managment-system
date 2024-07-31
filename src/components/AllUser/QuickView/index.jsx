@@ -43,7 +43,7 @@ const QuickView = ({ close, edit, user }) => {
         {/* ID */}
         <div className="flex flex-row items-center gap-8 w-full">
           <h3 className="w-3/12 text-xl font-semibold text-blue">ID number:</h3>
-          <p className="text-xl font-normal text-blue w-8/12">701791</p>
+          <p className="text-xl font-normal text-blue w-8/12">{user?.idCard}</p>
         </div>
         {/* Type */}
         <div className="flex flex-row items-center gap-8 w-full">

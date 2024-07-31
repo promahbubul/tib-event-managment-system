@@ -1,9 +1,4 @@
-import {
-  Link,
-  NavLink,
-  Outlet,
-  useLocation,
-} from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import logo from "../assets/images/logo/logo-without-bg.png";
 import { routePath, sidenav } from "../constant/sidenav.constant";
 import Footer from "../components/shared/Footer";
@@ -43,6 +38,7 @@ const MainLayout = () => {
               </NavLink>
               {item.title === "User" &&
               (location.pathname === "/dashboard/user/all-user" ||
+                location.pathname === "/dashboard/user/edit-user" ||
                 location.pathname === "/dashboard/user/add-user") ? (
                 <div className=" flex-col flex  ">
                   <UserSubNav />
@@ -78,6 +74,8 @@ const MainLayout = () => {
                 ? "All User Page"
                 : location.pathname === `/dashboard/user/${routePath.addUser}`
                 ? "Add User Page"
+                : location.pathname === `/dashboard/user/${routePath.editUser}`
+                ? "Edit User Page"
                 : "Page"}
             </h1>
           </div>

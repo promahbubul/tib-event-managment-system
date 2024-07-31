@@ -1,7 +1,6 @@
-const InputFile = ({ className, name, image, setImage }) => {
+const InputFile = ({ className, name, image, setImage, photographs }) => {
   // Upload Images
   const handleImageUpload = (e) => {
-    console.log(e);
     const fileImage = e.target.files[0];
     const data = new FormData();
     data.append("image", fileImage);
@@ -16,8 +15,6 @@ const InputFile = ({ className, name, image, setImage }) => {
       .then((res) => res.json())
       .then((data) => {
         setImage(data?.data);
-        // console.log(data?.data?.display_url);
-        // console.log(data.data);
       })
       .catch((err) => console.log(err));
   };
@@ -30,6 +27,24 @@ const InputFile = ({ className, name, image, setImage }) => {
           <img
             src={image?.display_url}
             alt={`event-image-${image?.id}`}
+            className="w-80 h-24"
+          />
+          <input
+            onChange={handleImageUpload}
+            type="file"
+            name={name}
+            className="z-50 opacity-0 absolute inset-y-0 inset-x-0 w-full h-full bg-orange-500 cursor-pointer "
+            id=""
+            placeholder="Upload"
+          />
+        </div>
+      ) : photographs ? (
+        <div
+          className={`relative border-2 flex justify-center items-center border-blue rounded-lg cursor-pointer  py-2`}
+        >
+          <img
+            src={photographs?.display_url}
+            alt={`event-image-${photographs?.id}`}
             className="w-80 h-24"
           />
           <input
