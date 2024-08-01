@@ -88,7 +88,7 @@ const AllUser = () => {
               <div className="col-span-1 text-right  relative z-10 justify-end flex flex-row items-center gap-5 ">
                 <Link
                   state={location?.pathname}
-                  to={`/dashboard/user/edit-user/${user?._id}`}
+                  to={`/user/edit-user/${user?._id}`}
                 >
                   <FaPen className="text-lg text-green cursor-pointer" />
                 </Link>

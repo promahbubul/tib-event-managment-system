@@ -83,7 +83,7 @@ const EventList = ({ events }) => {
                 {event?.genInfo?.subSectorName}
               </p>
               <div className="col-span-2 text-right  relative z-10 justify-end flex flex-row items-center gap-5">
-                <Link to={`/dashboard/event/edit/${event?._id}`}>
+                <Link to={`/event/edit/${event?._id}`}>
                   <FaPen className="text-lg text-green cursor-pointer" />
                 </Link>
                 <Link target="_blank" to={`/event/view/${event?._id}`}>

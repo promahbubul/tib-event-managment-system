@@ -2,15 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
-import PrivetRoute from "./routes/PrivetRoute";
 import EventContext from "./context/EventContext";
 import UserContext from "./context/UserContext";
+import routes from "./routes/routes";
 
 ReactDOM.render(
-  <EventContext>
-    <UserContext>
-      <RouterProvider router={PrivetRoute} />
-    </UserContext>
-  </EventContext>,
+  <UserContext>
+    <EventContext>
+      <RouterProvider router={routes} />
+    </EventContext>
+  </UserContext>,
   document.getElementById("root")
 );

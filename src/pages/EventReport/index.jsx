@@ -1,8 +1,13 @@
 import { useLoaderData } from "react-router-dom";
 import { EventFilter, EventList } from "../../components/EventReport";
+import { useContext } from "react";
+import { CreateUserContext } from "../../context/UserContext";
 
 const EventReport = () => {
   const events = useLoaderData();
+  const { user } = useContext(CreateUserContext);
+
+  console.log(user.email);
 
   console.log(events);
   return (

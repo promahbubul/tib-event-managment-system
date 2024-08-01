@@ -142,7 +142,7 @@ const EditEvent = () => {
           setSuccess(!success);
           setTimeout(() => {
             setSuccess(!success);
-            navigate("/dashboard/event-report");
+            navigate("/event-report");
           }, 1000);
 
           // Clear Form Data

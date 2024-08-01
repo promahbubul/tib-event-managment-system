@@ -22,19 +22,25 @@ const EventFilter = () => {
         <DropDown
           options={generalInformation?.ccc}
           className={"col-span-4"}
-          title={"Name of CCC:"}
+          title={"Name of Cluster:"}
           itemName={"cccName"}
         />
         <DropDown
           options={generalInformation?.ccc}
           className={"col-span-4"}
-          title={"Name of CCC:"}
+          title={"Sector:"}
           itemName={"cccName"}
         />
         <DropDown
           options={generalInformation?.ccc}
-          className={"col-span-4"}
-          title={"Name of CCC:"}
+          className={"col-span-9"}
+          title={"Name of Event:"}
+          itemName={"cccName"}
+        />
+        <DropDown
+          options={generalInformation?.ccc}
+          className={"col-span-3"}
+          title={"Year:"}
           itemName={"cccName"}
         />
       </div>

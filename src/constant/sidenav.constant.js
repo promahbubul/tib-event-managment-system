@@ -1,5 +1,5 @@
 const routePath = {
-  home: "home",
+  home: "",
   eventForm: "event-form",
   eventReport: "event-report",
   progressStatus: "progress-status",

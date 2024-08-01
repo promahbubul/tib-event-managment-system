@@ -24,7 +24,7 @@ const AddUser = () => {
     const password = form.get("password");
     const userType = form.get("userType");
     const userStatus = "Active";
-    const user = {
+    const createUser = {
       name,
       number,
       email,
@@ -33,32 +33,32 @@ const AddUser = () => {
       userStatus,
       idCard,
     };
-    const userString = JSON.stringify(user);
+    const userString = JSON.stringify(createUser);
 
     handleSignUp(email, password)
       .then((res) => {
         console.log(res);
-        // if (res.user) {
-        //   fetch("http://localhost:5000/api/v1/user", {
-        //     method: "POST",
-        //     body: userString,
-        //     headers: {
-        //       "Content-type": "application/json",
-        //     },
-        //   })
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //       if (data.acknowledged) {
-        //         setSuccess(true);
-        //         form.reset();
-        //         setTimeout(() => {
-        //           setSuccess(false);
-        //         }, 1000);
-        //       }
-        //     })
-        //     .catch((err) => console.log(err));
-        //   console.log(user);
-        // }
+        if (res.user) {
+          fetch("http://localhost:5000/api/v1/user", {
+            method: "POST",
+            body: userString,
+            headers: {
+              "Content-type": "application/json",
+            },
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.acknowledged) {
+                setSuccess(true);
+                form.reset();
+                setTimeout(() => {
+                  setSuccess(false);
+                }, 1000);
+              }
+            })
+            .catch((err) => console.log(err));
+          console.log(user);
+        }
       })
       .catch((err) => {
         setErrorMessage(err.message);
