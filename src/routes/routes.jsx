@@ -17,6 +17,7 @@ import Health from "../pages/Health";
 import Land from "../pages/Land";
 import Environment from "../pages/Environment";
 import PrivetRoute from "./PrivetRoute";
+import ViewEventAll from "../pages/ViewEventAll";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -111,6 +112,11 @@ const routes = createBrowserRouter([
     element: <ViewEvent />,
     loader: ({ params }) =>
       fetch(`http://localhost:5000/api/v1/event/${params.id}`),
+  },
+  {
+    path: "/event/view-all",
+    element: <ViewEventAll />,
+    loader: ({ params }) => fetch(`http://localhost:5000/api/v1/events/`),
   },
 ]);
 

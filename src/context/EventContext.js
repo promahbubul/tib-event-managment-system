@@ -4,6 +4,7 @@ import allParticipant from "../constant/participants.constant";
 export const CreateEventContext = createContext();
 
 const EventContext = ({ children }) => {
+  const [events, setEvents] = useState([]);
   const [img1, setImg1] = useState(null);
   const [CCC, setCCC] = useState(allParticipant.ccc);
   const [ACG, setACG] = useState(allParticipant.acg);
@@ -33,6 +34,8 @@ const EventContext = ({ children }) => {
     setImage1,
     setImage2,
     setImage3,
+    events,
+    setEvents,
   };
   return (
     <CreateEventContext.Provider value={values}>

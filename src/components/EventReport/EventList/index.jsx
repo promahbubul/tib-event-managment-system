@@ -13,6 +13,7 @@ const EventList = ({ events }) => {
   const [deleteModal, setDeleteModal] = useState(false);
   const [successModal, setSuccessModal] = useState(false);
   const [deleteId, setDeleteID] = useState(null);
+  
 
   // show delete modal
   const handleConfirmDelete = (confirm) => {
