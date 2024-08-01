@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import generalInformation from "../../../constant/generalInformation.constant";
 import { DropDown } from "../../shared";
+import pdfLogo from "../../../assets/images/gif/pdf.gif";
 
 const EventFilter = () => {
   // handle report filter
@@ -33,7 +35,7 @@ const EventFilter = () => {
         />
         <DropDown
           options={generalInformation?.ccc}
-          className={"col-span-9"}
+          className={"col-span-8"}
           title={"Name of Event:"}
           itemName={"cccName"}
         />
@@ -43,6 +45,13 @@ const EventFilter = () => {
           title={"Year:"}
           itemName={"cccName"}
         />
+        <Link
+          target="_blank"
+          className="col-span-1 border-2 border-red- shadow-inner rounded-2xl  shadow-LightBlue   hover:shadow-sky-600 ease-in-out transition-all delay-300"
+          to={"/event/view-all"}
+        >
+          <img src={pdfLogo} alt="" className="" />
+        </Link>
       </div>
     </form>
   );
