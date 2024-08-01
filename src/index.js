@@ -4,10 +4,13 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import PrivetRoute from "./routes/PrivetRoute";
 import EventContext from "./context/EventContext";
+import UserContext from "./context/UserContext";
 
 ReactDOM.render(
   <EventContext>
-    <RouterProvider router={PrivetRoute} />{" "}
+    <UserContext>
+      <RouterProvider router={PrivetRoute} />
+    </UserContext>
   </EventContext>,
   document.getElementById("root")
 );

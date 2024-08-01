@@ -1,6 +1,7 @@
 const homecards = [
   {
     id: 1,
+    path: "/dashboard/education",
     title: "Education",
     status: "103",
     shadow: "4px 4px 8px 0px #0000FF",
@@ -8,6 +9,7 @@ const homecards = [
   },
   {
     id: 2,
+    path: "/dashboard/health",
     title: "Health",
     status: "50",
     shadow: "4px 4px 8px 0px #FF0404",
@@ -15,6 +17,7 @@ const homecards = [
   },
   {
     id: 3,
+    path: "/dashboard/land",
     title: "Land",
     status: "41",
     shadow: "4px 4px 8px 0px #CC00FF",
@@ -22,6 +25,7 @@ const homecards = [
   },
   {
     id: 4,
+    path: "/dashboard/environment",
     title: "Environment",
     status: "17",
     shadow: "4px 4px 8px 0px #00FF85",

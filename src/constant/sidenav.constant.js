@@ -7,6 +7,11 @@ const routePath = {
   allUser: "all-user",
   addUser: "add-user",
   editUser: "edit-user/:id",
+  profile: "profile",
+  education: "education",
+  health: "health",
+  land: "land",
+  environment: "environment",
 };
 const sidenav = [
   { id: 1, title: "Home", path: routePath.home },

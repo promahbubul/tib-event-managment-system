@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import MainLayout from "../Layout/MainLayout";
 import { routePath } from "../constant/sidenav.constant";
 import { EventForm, EventReport, Home, ProgressStatus } from "../pages";
@@ -7,9 +8,15 @@ import EditEvent from "../pages/EditEvent";
 import EditUser from "../pages/EditUser";
 import ErrorPage from "../pages/ErrorPage";
 import Login from "../pages/Login";
+import Profile from "../pages/Profile";
 import Registration from "../pages/Registration";
 import User from "../pages/User";
 import ViewEvent from "../pages/ViewEvent";
+import homecards from "../constant/homecard.constant";
+import Educations from "../pages/Education";
+import Health from "../pages/Health";
+import Land from "../pages/Land";
+import Environment from "../pages/Environment";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -35,6 +42,27 @@ const PrivetRoute = createBrowserRouter([
         path: routePath.home,
         element: <Home />,
         loader: () => fetch("http://localhost:5000/api/v1/events"),
+      },
+      {
+        path: routePath.education,
+        element: <Educations />,
+      },
+      {
+        path: routePath.health,
+        element: <Health />,
+      },
+      {
+        path: routePath.land,
+        element: <Land />,
+      },
+      {
+        path: routePath.environment,
+        element: <Environment />,
+      },
+      {
+        path: routePath.profile,
+        element: <Profile />,
+        // loader: () => fetch("http://localhost:5000/api/v1/events"),
       },
       {
         path: routePath.user,

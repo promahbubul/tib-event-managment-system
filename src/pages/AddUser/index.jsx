@@ -1,13 +1,18 @@
 import { DropDown } from "../../components/shared";
 import { userType } from "../../constant/User.constant";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
 import SuccessFullyModal from "../../components/shared/Modal/SuccessfullyModal";
+import { CreateUserContext } from "../../context/UserContext";
+import ErrorModal from "../../components/shared/Modal/ErrorModal";
 
 const AddUser = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const { handleSignUp, user, setUser } = useContext(CreateUserContext);
 
   const handleAddUser = (e) => {
     e.preventDefault();
@@ -30,25 +35,35 @@ const AddUser = () => {
     };
     const userString = JSON.stringify(user);
 
-    fetch("http://localhost:5000/api/v1/user", {
-      method: "POST",
-      body: userString,
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.acknowledged) {
-          setSuccess(true);
-          setTimeout(() => {
-            setSuccess(false);
-          }, 1000);
-        }
+    handleSignUp(email, password)
+      .then((res) => {
+        console.log(res);
+        // if (res.user) {
+        //   fetch("http://localhost:5000/api/v1/user", {
+        //     method: "POST",
+        //     body: userString,
+        //     headers: {
+        //       "Content-type": "application/json",
+        //     },
+        //   })
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //       if (data.acknowledged) {
+        //         setSuccess(true);
+        //         form.reset();
+        //         setTimeout(() => {
+        //           setSuccess(false);
+        //         }, 1000);
+        //       }
+        //     })
+        //     .catch((err) => console.log(err));
+        //   console.log(user);
+        // }
       })
-      .catch((err) => console.log(err));
-
-    // console.log(user);
+      .catch((err) => {
+        setErrorMessage(err.message);
+        setError(true);
+      });
   };
   return (
     <div className=" h-full overflow-auto  flex  bg-[#E3E3E8] ">
@@ -130,6 +145,7 @@ const AddUser = () => {
         </form>
         {/* User Add Success */}
         {success && <SuccessFullyModal close={setSuccess} />}
+        {error && <ErrorModal message={errorMessage} close={setError} />}
       </div>
     </div>
   );
