@@ -14,11 +14,11 @@ const Sidebar = () => {
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "text-2xl block font-medium bg-navyBlue pl-8 py-3 border-b first:border-t  border-blue4 "
+                  ? "text-lg block font-normal bg-navyBlue pl-8 py-1.5 border-b first:border-t  border-blue4 "
                   : location.pathname === "/user/add-user" &&
                     item.title === "User"
-                  ? "text-2xl block font-medium bg-navyBlue pl-8 py-3 border-b first:border-t  border-blue4 "
-                  : "text-2xl block group font-medium  pl-8 py-3 border-b first:border-t  border-blue4 hover:bg-navyBlue  "
+                  ? "text-lg block font-normal bg-navyBlue pl-8 py-1.5 border-b first:border-t  border-blue4 "
+                  : "text-lg block group font-normal  pl-8 py-1.5 border-b first:border-t  border-blue4 hover:bg-navyBlue"
               }
               key={item.id}
               to={item.path === "user" ? `/${item.path}/all-user` : item.path}

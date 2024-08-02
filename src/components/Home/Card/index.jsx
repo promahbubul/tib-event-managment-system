@@ -4,7 +4,7 @@ const HomeCard = ({ children, className, shadow, status, title, pp }) => {
   return (
     <div
       style={{ boxShadow: shadow }}
-      className={` ${className} text-white py-10 rounded-lg bg-gradient-to-tr cursor-pointer`}
+      className={` ${className} text-white py-9 rounded-lg bg-gradient-to-tr cursor-pointer`}
     >
       <h1 className="text-[40px] text-center font-extrabold ">
         {status ? status : 0}

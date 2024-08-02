@@ -34,7 +34,7 @@ const Home = () => {
   // console.log( == "Education");
   console.log(education);
   return (
-    <section className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-12 px-10 pt-14 ">
+    <section className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10 px-10 pt-14 ">
       {homecards?.map((card) => (
         <Link key={card?.id} to={card?.path}>
           <HomeCard

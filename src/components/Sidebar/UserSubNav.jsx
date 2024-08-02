@@ -13,8 +13,8 @@ const UserSubNav = () => {
           key={item.id}
           className={({ isActive }) =>
             isActive
-              ? "text-lg border-2  pl-20 font-medium bg-navyBlue  py-3 border-b first:border-t  border-blue4 "
-              : "text-lg font-medium  pl-20 py-3 border-b first:border-t hover:bg-navyBlue  bg-[#0A174A]  border-blue4 "
+              ? "text-lg border-2  pl-20 font-medium bg-navyBlue  py-1.5 border-b first:border-t  border-blue4 "
+              : "text-lg font-medium  pl-20 py-1.5 border-b first:border-t hover:bg-navyBlue  bg-[#0A174A]  border-blue4 "
           }
         >
           {item.title}
