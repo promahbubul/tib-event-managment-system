@@ -96,7 +96,7 @@ const routes = createBrowserRouter([
       {
         path: routePath.eventReport,
         element: <EventReport />,
-        loader: () => fetch("http://localhost:5000/api/v1/events"),
+        // loader: () => fetch("http://localhost:5000/api/v1/events"),
       },
       { path: routePath.progressStatus, element: <ProgressStatus /> },
       {
@@ -116,7 +116,6 @@ const routes = createBrowserRouter([
   {
     path: "/event/view-all",
     element: <ViewEventAll />,
-    loader: ({ params }) => fetch(`http://localhost:5000/api/v1/events/`),
   },
 ]);
 

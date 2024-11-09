@@ -3,17 +3,18 @@ import moment from "moment";
 import { FaPen, FaTrash } from "react-icons/fa";
 import { PiEyeFill } from "react-icons/pi";
 import Details from "./Details";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import ConfirmationModal from "../../shared/Modal/ConfirmationModal";
 import SuccessFullyModal from "../../shared/Modal/SuccessfullyModal";
+import { CreateEventContext } from "../../../context/EventContext";
 
-const EventList = ({ events }) => {
-  const [eventData, setEventData] = useState(events);
+const EventList = () => {
+  // const [eventData, setEventData] = useState([]);
+  const { eventData, setEventData } = useContext(CreateEventContext);
   const [deleteModal, setDeleteModal] = useState(false);
   const [successModal, setSuccessModal] = useState(false);
   const [deleteId, setDeleteID] = useState(null);
-  
 
   // show delete modal
   const handleConfirmDelete = (confirm) => {

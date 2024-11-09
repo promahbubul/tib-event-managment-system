@@ -1,8 +1,7 @@
 import { Document, Page, PDFViewer, View } from "@react-pdf/renderer";
 import styles from "../../constant/Stylesheets.constant";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CreateEventContext } from "../../context/EventContext";
-import { useLoaderData } from "react-router-dom";
 import GeneralInformation from "../../components/ViewEvent/SectionTitle";
 import ProgramDetails from "../../components/ViewEvent/ProgramDetails";
 import Photos from "../../components/ViewEvent/Photos";
@@ -11,10 +10,17 @@ import Footer from "../../components/ViewEvent/Footer";
 import Header from "../../components/ViewEvent/Header";
 
 const ViewEventAll = () => {
-  //   const { events } = useContext(CreateEventContext);
-  const events = useLoaderData();
+  const [eventData, setEventData] = useState([]);
+  // const { eventData, setEventData } = useContext(CreateEventContext);
 
-  console.log(events);
+  // console.log(eventData);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/v1/filter-event")
+      .then((res) => res.json())
+      .then((data) => setEventData(data[0].result))
+      .catch((error) => console.error(error));
+  }, []);
 
   return (
     <PDFViewer
@@ -24,7 +30,7 @@ const ViewEventAll = () => {
       }}
     >
       <Document title={"Dhaka"}>
-        {events?.map((event) => (
+        {eventData?.map((event) => (
           <Page key={event?._id} size="A4" style={styles.page}>
             <View style={styles.section}>
               {/* Header */}
