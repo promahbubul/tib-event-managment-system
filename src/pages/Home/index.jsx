@@ -10,8 +10,7 @@ const Home = () => {
   const [health, setHealth] = useState([]);
   const [land, setLand] = useState([]);
   const [environment, setEnvironment] = useState([]);
-  // const [education, setEducation] = useState()
-  // const [education, setEducation] = useState();
+
 
   useEffect(() => {
     setEducation(
@@ -23,15 +22,7 @@ const Home = () => {
       events.filter((event) => event?.genInfo.sectorName === "Environment")
     );
   }, []);
-  // console.log({
-  //   education,
-  //   health,
-  //   land,
-  //   environment,
-  // });
-
-  // console.log(events.filter((item) => item.genInfo.sectorName === ));
-  // console.log( == "Education");
+ 
   console.log(education);
   return (
     <section className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10 px-10 pt-14 ">

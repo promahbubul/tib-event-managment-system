@@ -7,7 +7,6 @@ const EventReport = () => {
   const eventsData = useLoaderData();
   const { user, events, setEvents } = useContext(CreateUserContext);
 
-  console.log(events);
   return (
     <div className="border-2 p-4 bg-[#E3E3E8] h-full overflow-auto ">
       <EventFilter />

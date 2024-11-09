@@ -11,6 +11,21 @@ const generalInformation = {
     "Upazila Land",
   ],
   cluster: ["Dhaka", "Shylet", "Chittagong", "Rangpur"],
+  year: [2020, 2021, 2022, 2023, 2024],
+  month: [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ],
 };
 
 export default generalInformation;

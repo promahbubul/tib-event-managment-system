@@ -5,6 +5,7 @@ export const CreateEventContext = createContext();
 
 const EventContext = ({ children }) => {
   const [events, setEvents] = useState([]);
+  const [filterEvents, setFilterEvents] = useState({});
   const [img1, setImg1] = useState(null);
   const [CCC, setCCC] = useState(allParticipant.ccc);
   const [ACG, setACG] = useState(allParticipant.acg);
@@ -14,6 +15,12 @@ const EventContext = ({ children }) => {
   const [image1, setImage1] = useState(null);
   const [image2, setImage2] = useState(null);
   const [image3, setImage3] = useState(null);
+
+  const handleFilterEvents = (eventField) => {
+    setFilterEvents({ ...filterEvents, ...eventField });
+  };
+
+  console.log(filterEvents);
 
   const values = {
     img1,
@@ -36,6 +43,7 @@ const EventContext = ({ children }) => {
     setImage3,
     events,
     setEvents,
+    handleFilterEvents,
   };
   return (
     <CreateEventContext.Provider value={values}>

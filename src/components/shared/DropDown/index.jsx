@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { CreateEventContext } from "../../../context/EventContext";
+
 const DropDown = ({
   className,
   options,
@@ -6,6 +9,8 @@ const DropDown = ({
   value,
   inputClass,
 }) => {
+  const { handleFilterEvents } = useContext(CreateEventContext);
+
   return (
     <div className={`bg-white  rounded-lg p-[6px] ${className}`}>
       {title && (
@@ -14,6 +19,7 @@ const DropDown = ({
         </h6>
       )}
       <select
+        onChange={(e) => handleFilterEvents({ [itemName]: e.target.value })}
         className={` w-full cursor-pointer font-normal text-lg text-blue outline-none  rounded-lg ${
           inputClass ? inputClass : "py-2 px-4 bg-lightBlue2"
         }`}
@@ -21,6 +27,9 @@ const DropDown = ({
         defaultValue={value}
         id=""
       >
+        <option value="" className="">
+          Select
+        </option>
         {options?.map((item, index) => (
           <option key={index} className="">
             {item}

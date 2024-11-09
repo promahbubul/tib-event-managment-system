@@ -2,9 +2,15 @@ import { Link } from "react-router-dom";
 import generalInformation from "../../../constant/generalInformation.constant";
 import { DropDown } from "../../shared";
 import pdfLogo from "../../../assets/images/gif/pdf.gif";
+import homecards from "../../../constant/homecard.constant";
+import { useContext } from "react";
+import EventContext, {
+  CreateEventContext,
+} from "../../../context/EventContext";
 
 const EventFilter = () => {
-  // handle report filter
+  const { handleFilterEvents } = useContext(CreateEventContext);
+
   const handleFormSubmit = (e) => {
     console.log(e);
   };
@@ -12,9 +18,15 @@ const EventFilter = () => {
     <form
       onSubmit={handleFormSubmit}
       action=""
-      className=" bg-[#E3E3E8] overflow-auto"
+      className="bg-[#E3E3E8] overflow-auto"
     >
       <div className="grid grid-cols-12 mt-4 gap-2">
+        <DropDown
+          options={generalInformation?.cluster}
+          className={"col-span-4"}
+          title={"Name of Cluster:"}
+          itemName={"clusterName"}
+        />
         <DropDown
           options={generalInformation?.ccc}
           className={"col-span-4"}
@@ -22,28 +34,28 @@ const EventFilter = () => {
           itemName={"cccName"}
         />
         <DropDown
-          options={generalInformation?.ccc}
-          className={"col-span-4"}
-          title={"Name of Cluster:"}
-          itemName={"cccName"}
-        />
-        <DropDown
-          options={generalInformation?.ccc}
+          options={homecards.map((event) => event.title)}
           className={"col-span-4"}
           title={"Sector:"}
-          itemName={"cccName"}
+          itemName={"sectorName"}
         />
         <DropDown
-          options={generalInformation?.ccc}
-          className={"col-span-8"}
+          options={generalInformation.nameEvent}
+          className={"col-span-6"}
           title={"Name of Event:"}
-          itemName={"cccName"}
+          itemName={"eventName"}
         />
         <DropDown
-          options={generalInformation?.ccc}
+          options={generalInformation?.year}
           className={"col-span-3"}
           title={"Year:"}
-          itemName={"cccName"}
+          itemName={"year"}
+        />
+        <DropDown
+          options={generalInformation?.month}
+          className={"col-span-2"}
+          title={"Month:"}
+          itemName={"month"}
         />
         <Link
           target="_blank"
