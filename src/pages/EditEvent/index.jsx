@@ -125,8 +125,8 @@ const EditEvent = () => {
     const photographs = [image1, image2, image3];
     console.log(photographs);
 
-    console.log({ genInfo, programDetails, participants });
-    const updateEvent = { genInfo, programDetails, participants };
+    console.log({ genInfo, programDetails, participants, photographs });
+    const updateEvent = { genInfo, programDetails, participants, photographs };
     const updateEventString = JSON.stringify(updateEvent);
     fetch(`http://localhost:5000/api/v1/event/${event._id}`, {
       method: "PUT",
