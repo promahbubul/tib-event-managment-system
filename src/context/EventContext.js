@@ -20,7 +20,7 @@ const EventContext = ({ children }) => {
     const filterData = { ...filterEvents, ...eventField };
     setFilterEvents(filterData);
 
-    fetch("/api/v1/filter-event", {
+    fetch("https://ems.curryjunction.uk/api/v1/filter-event", {
       method: "POST",
       body: JSON.stringify(filterData),
       headers: {
@@ -33,7 +33,7 @@ const EventContext = ({ children }) => {
   };
 
   useEffect(() => {
-    fetch("/api/v1/events")
+    fetch("https://ems.curryjunction.uk/api/v1/events")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

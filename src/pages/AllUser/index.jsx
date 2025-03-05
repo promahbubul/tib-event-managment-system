@@ -27,7 +27,7 @@ const AllUser = () => {
     console.log(confirm);
     console.log(deleteId);
     if (confirm) {
-      fetch(`/api/v1/user/${deleteId}`, {
+      fetch(`https://ems.curryjunction.uk/api/v1/user/${deleteId}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

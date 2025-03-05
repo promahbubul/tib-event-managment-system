@@ -124,7 +124,7 @@ const EventForm = () => {
     // console.log({ genInfo, programDetails, participants, imageList });
     const event = { genInfo, programDetails, participants, photographs };
     const eventString = JSON.stringify(event);
-    fetch("/api/v1/event", {
+    fetch("https://ems.curryjunction.uk/api/v1/event", {
       method: "POST",
       body: eventString,
       headers: {

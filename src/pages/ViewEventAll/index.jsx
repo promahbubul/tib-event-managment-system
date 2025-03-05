@@ -16,7 +16,7 @@ const ViewEventAll = () => {
   // console.log(eventData);
 
   useEffect(() => {
-    fetch("/api/v1/filter-event")
+    fetch("https://ems.curryjunction.uk/api/v1/filter-event")
       .then((res) => res.json())
       .then((data) => setEventData(data[0].result))
       .catch((error) => console.error(error));

@@ -39,7 +39,7 @@ const AddUser = () => {
       .then((res) => {
         console.log(res);
         if (res.user) {
-          fetch("/api/v1/user", {
+          fetch("https://ems.curryjunction.uk/api/v1/user", {
             method: "POST",
             body: userString,
             headers: {
