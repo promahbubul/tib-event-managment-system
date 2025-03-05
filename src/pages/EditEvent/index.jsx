@@ -128,7 +128,7 @@ const EditEvent = () => {
     console.log({ genInfo, programDetails, participants, photographs });
     const updateEvent = { genInfo, programDetails, participants, photographs };
     const updateEventString = JSON.stringify(updateEvent);
-    fetch(`http://localhost:5000/api/v1/event/${event._id}`, {
+    fetch(`/api/v1/event/${event._id}`, {
       method: "PUT",
       body: updateEventString,
       headers: {

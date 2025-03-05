@@ -19,7 +19,7 @@ const EventList = () => {
   // show delete modal
   const handleConfirmDelete = (confirm) => {
     if (confirm) {
-      fetch(`http://localhost:5000/api/v1/event/${deleteId}`, {
+      fetch(`/api/v1/event/${deleteId}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

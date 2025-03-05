@@ -47,7 +47,7 @@ const routes = createBrowserRouter([
       {
         path: routePath.home,
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/api/v1/events"),
+        loader: () => fetch("/api/v1/events"),
       },
       {
         path: routePath.education,
@@ -68,23 +68,22 @@ const routes = createBrowserRouter([
       {
         path: routePath.profile,
         element: <Profile />,
-        // loader: () => fetch("http://localhost:5000/api/v1/events"),
+        // loader: () => fetch("/api/v1/events"),
       },
       {
         path: routePath.user,
         element: <User />,
-        loader: () => fetch("http://localhost:5000/api/v1/events"),
+        loader: () => fetch("/api/v1/events"),
         children: [
           {
             path: routePath.allUser,
             element: <AllUser />,
-            loader: () => fetch("http://localhost:5000/api/v1/user"),
+            loader: () => fetch("/api/v1/user"),
           },
           {
             path: routePath.editUser,
             element: <EditUser />,
-            loader: ({ params }) =>
-              fetch(`http://localhost:5000/api/v1/user/${params.id}`),
+            loader: ({ params }) => fetch(`/api/v1/user/${params.id}`),
           },
           {
             path: routePath.addUser,
@@ -96,22 +95,20 @@ const routes = createBrowserRouter([
       {
         path: routePath.eventReport,
         element: <EventReport />,
-        // loader: () => fetch("http://localhost:5000/api/v1/events"),
+        // loader: () => fetch("/api/v1/events"),
       },
       { path: routePath.progressStatus, element: <ProgressStatus /> },
       {
         path: "event/edit/:id",
         element: <EditEvent />,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/v1/event/${params.id}`),
+        loader: ({ params }) => fetch(`/api/v1/event/${params.id}`),
       },
     ],
   },
   {
     path: "/event/view/:id",
     element: <ViewEvent />,
-    loader: ({ params }) =>
-      fetch(`http://localhost:5000/api/v1/event/${params.id}`),
+    loader: ({ params }) => fetch(`/api/v1/event/${params.id}`),
   },
   {
     path: "/event/view-all",

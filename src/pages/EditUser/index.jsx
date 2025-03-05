@@ -37,7 +37,7 @@ const EditUser = () => {
     const userString = JSON.stringify(updateUser);
     // console.log(user._id);
 
-    fetch(`http://localhost:5000/api/v1/user/${user?._id}`, {
+    fetch(`/api/v1/user/${user?._id}`, {
       method: "PUT",
       body: userString,
       headers: {

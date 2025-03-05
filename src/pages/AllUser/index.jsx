@@ -27,7 +27,7 @@ const AllUser = () => {
     console.log(confirm);
     console.log(deleteId);
     if (confirm) {
-      fetch(`http://localhost:5000/api/v1/user/${deleteId}`, {
+      fetch(`/api/v1/user/${deleteId}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

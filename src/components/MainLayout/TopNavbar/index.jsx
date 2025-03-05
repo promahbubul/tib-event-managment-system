@@ -52,7 +52,7 @@ const TopNavbar = () => {
       </div>
       <div className="flex flex-row items-center gap-5">
         <Link to={routePath.eventForm}>
-          <button className="bg-green rounded-lg py-4 px-12">New Event</button>
+          <button className="bg-green rounded-lg hover:scale-95 duration-300 transition-all active:scale-100 py-4 px-12">New Event</button>
         </Link>
         {/* User Profile */}
         <div className="relative  group cursor-pointer ">
