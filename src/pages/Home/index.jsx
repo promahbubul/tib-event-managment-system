@@ -14,15 +14,17 @@ const Home = () => {
 
   useEffect(() => {
     setEducation(
-      events.filter((event) => event?.genInfo.sectorName === "Education")
+      events?.filter((event) => event?.genInfo?.sectorName === "Education")
     );
-    setHealth(events.filter((event) => event?.genInfo.sectorName === "Health"));
-    setLand(events.filter((event) => event?.genInfo.sectorName === "Land"));
+    setHealth(
+      events?.filter((event) => event?.genInfo.sectorName === "Health")
+    );
+    setLand(events?.filter((event) => event?.genInfo.sectorName === "Land"));
     setEnvironment(
-      events.filter((event) => event?.genInfo.sectorName === "Environment")
+      events?.filter((event) => event?.genInfo.sectorName === "Environment")
     );
   }, []);
- 
+
   console.log(education);
   return (
     <section className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10 px-10 pt-14 ">
@@ -32,14 +34,14 @@ const Home = () => {
             shadow={card?.shadow}
             title={card?.title}
             status={
-              card.title === "Education"
+              card?.title === "Education"
                 ? education.length
-                : card.title === "Health"
-                ? health.length
-                : card.title === "Land"
-                ? land.length
-                : card.title === "Environment"
-                ? environment.length
+                : card?.title === "Health"
+                ? health?.length
+                : card?.title === "Land"
+                ? land?.length
+                : card?.title === "Environment"
+                ? environment?.length
                 : ""
             }
             pp={education}
