@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
-export const CreateUserContext = createContext();
+export const  CreateUserContext = createContext();
 
 const auth = getAuth(app);
 const UserContext = ({ children }) => {

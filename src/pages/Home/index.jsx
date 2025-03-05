@@ -25,7 +25,7 @@ const Home = () => {
     );
   }, []);
 
-  console.log(education);
+  console.log(events);
   return (
     <section className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10 px-10 pt-14 ">
       {homecards?.map((card) => (
